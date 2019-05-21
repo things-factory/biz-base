@@ -1,0 +1,1 @@
+export const UPDATE_BIZ_BASE = 'UPDATE_BIZ_BASE'
