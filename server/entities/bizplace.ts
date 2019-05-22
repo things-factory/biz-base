@@ -28,4 +28,9 @@ export class Bizplace extends BaseEntity {
 
   @Column('text')
   latlng: string
+
+  @Column('text', {
+    nullable: true
+  })
+  state: string
 }

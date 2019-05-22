@@ -27,4 +27,9 @@ export class Company extends BaseEntity {
 
   @OneToMany(type => Bizplace, bizplace => bizplace.parent)
   bizplaces: Bizplace[]
+
+  @Column('text', {
+    nullable: true
+  })
+  state: string
 }
