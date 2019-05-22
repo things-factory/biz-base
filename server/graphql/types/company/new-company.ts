@@ -1,9 +1,8 @@
 import { gql } from 'apollo-server-koa'
 
-export const NewCommonCode = gql`
-  input NewCommonCode {
+export const NewCompany = gql`
+  input NewCompany {
     name: String!
     description: String
-    bundle: String!
   }
 `
