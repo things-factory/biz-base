@@ -1,25 +1,25 @@
-import { Company } from './company'
-import { NewCompany } from './new-company'
-import { CompanyPatch } from './company-patch'
+import { Customer } from './customer'
+import { NewCustomer } from './new-customer'
+import { CustomerPatch } from './customer-patch'
 
 export const Mutation = `
-  createCompany (
-    company: NewCompany!
-  ): Company
+  createCustomer (
+    Customer: NewCustomer!
+  ): Customer
 
-  updateCompany (
+  updateCustomer (
     id: String!
-    patch: CompanyPatch!
-  ): Company
+    patch: CustomerPatch!
+  ): Customer
 
-  deleteCompany (
+  deleteCustomer (
     id: String!
-  ): Company
+  ): Customer
 `
 
 export const Query = `
-  companys: [Company]
-  company(id: String!): Company
+  Customers: [Customer]
+  Customer(id: String!): Customer
 `
 
-export const Types = [Company, NewCompany, CompanyPatch]
+export const Types = [Customer, NewCustomer, CustomerPatch]

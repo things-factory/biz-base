@@ -1,17 +1,17 @@
-import { vendorResolver } from './vendor'
-import { vendorsResolver } from './vendors'
+import { contactPointResolver } from './contact-point'
+import { contactPointsResolver } from './contact-points'
 
-import { updateVendor } from './update-vendor'
-import { createVendor } from './create-vendor'
-import { deleteVendor } from './delete-vendor'
+import { updateContactPoint } from './update-contact-point'
+import { createContactPoint } from './create-contact-point'
+import { deleteContactPoint } from './delete-contact-point'
 
 export const Query = {
-  ...vendorResolver,
-  ...vendorsResolver
+  ...contactPointResolver,
+  ...contactPointsResolver
 }
 
 export const Mutation = {
-  ...updateVendor,
-  ...createVendor,
-  ...deleteVendor
+  ...updateContactPoint,
+  ...createContactPoint,
+  ...deleteContactPoint
 }
