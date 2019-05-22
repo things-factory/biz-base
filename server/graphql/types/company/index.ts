@@ -18,7 +18,7 @@ export const Mutation = `
 `
 
 export const Query = `
-  companys: [Company]
+  companies: [Company]
   company(id: String!): Company
 `
 

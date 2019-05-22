@@ -18,8 +18,8 @@ export const Mutation = `
 `
 
 export const Query = `
-  Customers: [Customer]
-  Customer(id: String!): Customer
+  customers: [Customer]
+  customer(id: String!): Customer
 `
 
 export const Types = [Customer, NewCustomer, CustomerPatch]
