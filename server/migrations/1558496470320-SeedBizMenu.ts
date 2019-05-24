@@ -10,21 +10,24 @@ export class SeedBizMenu1558496470320 implements MigrationInterface {
     const domain = await domainRepository.findOne({ name: 'SYSTEM' })
 
     try {
-      BIZ_MENUS.forEach(async menus => {
-        const groupMenu = { ...menus }
+      for (let idx in BIZ_MENUS) {
+        let menu = BIZ_MENUS[idx]
+
+        const groupMenu = { ...menu }
         delete groupMenu.childrens
 
         const parent = await repository.save({ ...groupMenu, domain })
 
         //child will be created after parents created
-        menus.childrens.forEach(async menu => {
+        for (let idx in menu.childrens) {
+          let childMenu = menu.childrens[idx]
           await repository.save({
-            ...menu,
+            ...childMenu,
             domain,
             parent
           })
-        })
-      })
+        }
+      }
     } catch (e) {
       console.error(e)
     }
