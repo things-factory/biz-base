@@ -7,7 +7,7 @@ export const BIZ_MENU_COLUMNS = [
     colSize: 64,
     reverseSort: false,
     uniqRank: 0,
-    searchRank: 0,
+    searchRank: 10,
     ignoreOnSave: false,
     colType: 'string',
     name: 'id',
@@ -15,7 +15,7 @@ export const BIZ_MENU_COLUMNS = [
     rank: 10,
     extField: false,
     term: 'label.id',
-    gridWidth: 0
+    gridWidth: 100
   },
   {
     nullable: false,
@@ -25,7 +25,7 @@ export const BIZ_MENU_COLUMNS = [
     colSize: 64,
     reverseSort: false,
     uniqRank: 0,
-    searchRank: 0,
+    searchRank: 10,
     ignoreOnSave: false,
     colType: 'string',
     name: 'name',
@@ -33,7 +33,7 @@ export const BIZ_MENU_COLUMNS = [
     rank: 10,
     extField: false,
     term: 'label.name',
-    gridWidth: 0
+    gridWidth: 100
   },
   {
     nullable: false,
@@ -43,7 +43,7 @@ export const BIZ_MENU_COLUMNS = [
     colSize: 64,
     reverseSort: false,
     uniqRank: 0,
-    searchRank: 0,
+    searchRank: 10,
     ignoreOnSave: false,
     colType: 'string',
     name: 'description',
@@ -51,7 +51,7 @@ export const BIZ_MENU_COLUMNS = [
     rank: 10,
     extField: false,
     term: 'label.description',
-    gridWidth: 0
+    gridWidth: 100
   },
   {
     nullable: false,
@@ -61,7 +61,7 @@ export const BIZ_MENU_COLUMNS = [
     colSize: 64,
     reverseSort: false,
     uniqRank: 0,
-    searchRank: 0,
+    searchRank: 10,
     ignoreOnSave: false,
     colType: 'string',
     name: 'countryCode',
@@ -69,7 +69,7 @@ export const BIZ_MENU_COLUMNS = [
     rank: 10,
     extField: false,
     term: 'label.countryCode',
-    gridWidth: 0
+    gridWidth: 100
   },
   {
     nullable: false,
@@ -79,7 +79,7 @@ export const BIZ_MENU_COLUMNS = [
     colSize: 64,
     reverseSort: false,
     uniqRank: 0,
-    searchRank: 0,
+    searchRank: 10,
     ignoreOnSave: false,
     colType: 'string',
     name: 'brn',
@@ -87,7 +87,7 @@ export const BIZ_MENU_COLUMNS = [
     rank: 10,
     extField: false,
     term: 'label.brn',
-    gridWidth: 0
+    gridWidth: 100
   },
   {
     nullable: false,
@@ -97,7 +97,7 @@ export const BIZ_MENU_COLUMNS = [
     colSize: 64,
     reverseSort: false,
     uniqRank: 0,
-    searchRank: 0,
+    searchRank: 10,
     ignoreOnSave: false,
     colType: 'string',
     name: 'address',
@@ -105,7 +105,7 @@ export const BIZ_MENU_COLUMNS = [
     rank: 10,
     extField: false,
     term: 'label.address',
-    gridWidth: 0
+    gridWidth: 100
   },
   {
     nullable: false,
@@ -115,7 +115,7 @@ export const BIZ_MENU_COLUMNS = [
     colSize: 64,
     reverseSort: false,
     uniqRank: 0,
-    searchRank: 0,
+    searchRank: 10,
     ignoreOnSave: false,
     colType: 'string',
     name: 'bizplaces',
@@ -123,7 +123,9 @@ export const BIZ_MENU_COLUMNS = [
     rank: 10,
     extField: false,
     term: 'label.bizplaces',
-    gridWidth: 0
+    refType: 'Entity',
+    refName: 'Bizplace',
+    gridWidth: 100
   },
   {
     nullable: false,
@@ -133,7 +135,7 @@ export const BIZ_MENU_COLUMNS = [
     colSize: 64,
     reverseSort: false,
     uniqRank: 0,
-    searchRank: 0,
+    searchRank: 10,
     ignoreOnSave: false,
     colType: 'string',
     name: 'state',
@@ -141,6 +143,6 @@ export const BIZ_MENU_COLUMNS = [
     rank: 10,
     extField: false,
     term: 'label.state',
-    gridWidth: 0
+    gridWidth: 100
   }
 ]

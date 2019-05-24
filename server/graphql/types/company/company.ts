@@ -5,5 +5,10 @@ export const Company = gql`
     id: String
     name: String
     description: String
+    countryCode: String
+    address: String
+    brn: String
+    bizplaces: [Bizplace]
+    state: String
   }
 `
