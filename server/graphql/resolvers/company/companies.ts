@@ -1,6 +1,6 @@
 import { getRepository } from 'typeorm'
 import { Company } from '../../../entities'
-import { conditionBuilder } from './query-builder'
+import { conditionBuilder } from '@things-factory/shell'
 
 export const companiesResolver = {
   async companies(_: any, params: { filters: any }, context: any, args: any) {
@@ -12,9 +12,11 @@ export const companiesResolver = {
       filters.forEach((filter: { name: string; operator: string; value: any }, index: number) => {
         const condition = conditionBuilder(filter.name, filter.operator, filter.value)
         if (index === 0) {
-          queryBuilder.where(condition.clause, condition.parameters)
+          queryBuilder.where(condition.clause)
+          if (condition.parameters) queryBuilder.setParameters(condition.parameters)
         } else {
-          queryBuilder.andWhere(condition.clause, condition.parameters)
+          queryBuilder.andWhere(condition.clause)
+          if (condition.parameters) queryBuilder.setParameters(condition.parameters)
         }
       })
     }
