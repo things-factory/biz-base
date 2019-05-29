@@ -2,38 +2,38 @@ export const conditionBuilder = function(fieldName: string, operator: string, va
   switch (operator) {
     case 'eq':
       return {
-        clause: `${fieldName} = :arg`,
-        parameters: { arg: value }
+        clause: `${fieldName} = :${fieldName}`,
+        parameters: { [fieldName]: value }
       }
 
     case 'contains':
       return {
-        clause: `${fieldName} LIKE :arg`,
-        parameters: { arg: `%${value}%` }
+        clause: `${fieldName} LIKE :${fieldName}`,
+        parameters: { [fieldName]: `%${value}%` }
       }
 
     case 'lt':
       return {
-        clause: `${fieldName} < :arg`,
-        parameters: { arg: value }
+        clause: `${fieldName} < :${fieldName}`,
+        parameters: { [fieldName]: value }
       }
 
     case 'gt':
       return {
-        clause: `${fieldName} > :arg`,
-        parameters: { arg: value }
+        clause: `${fieldName} > :${fieldName}`,
+        parameters: { [fieldName]: value }
       }
 
     case 'lte':
       return {
-        clause: `${fieldName} <= :arg`,
-        parameters: { arg: value }
+        clause: `${fieldName} <= :${fieldName}`,
+        parameters: { [fieldName]: value }
       }
 
     case 'gte':
       return {
-        clause: `${fieldName} >= :arg`,
-        parameters: { arg: value }
+        clause: `${fieldName} >= :${fieldName}`,
+        parameters: { [fieldName]: value }
       }
   }
 }
