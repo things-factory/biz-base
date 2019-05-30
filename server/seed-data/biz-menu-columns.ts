@@ -16,12 +16,12 @@ export const BIZ_MENU_COLUMNS = [
     rank: 10,
     extField: false,
     term: 'label.id',
-    gridWidth: 100
+    gridWidth: 0
   },
   {
     nullable: false,
-    sortRank: 0,
-    gridRank: 0,
+    sortRank: 10,
+    gridRank: 10,
     virtualField: false,
     colSize: 64,
     reverseSort: false,
@@ -40,7 +40,7 @@ export const BIZ_MENU_COLUMNS = [
   {
     nullable: false,
     sortRank: 0,
-    gridRank: 0,
+    gridRank: 20,
     virtualField: false,
     colSize: 64,
     reverseSort: false,
@@ -58,8 +58,8 @@ export const BIZ_MENU_COLUMNS = [
   },
   {
     nullable: false,
-    sortRank: 0,
-    gridRank: 0,
+    sortRank: 20,
+    gridRank: 30,
     virtualField: false,
     colSize: 64,
     reverseSort: false,
@@ -77,8 +77,8 @@ export const BIZ_MENU_COLUMNS = [
   },
   {
     nullable: false,
-    sortRank: 0,
-    gridRank: 0,
+    sortRank: 30,
+    gridRank: 40,
     virtualField: false,
     colSize: 64,
     reverseSort: false,
@@ -97,7 +97,7 @@ export const BIZ_MENU_COLUMNS = [
   {
     nullable: false,
     sortRank: 0,
-    gridRank: 0,
+    gridRank: 50,
     virtualField: false,
     colSize: 64,
     reverseSort: false,
@@ -116,7 +116,7 @@ export const BIZ_MENU_COLUMNS = [
   {
     nullable: false,
     sortRank: 0,
-    gridRank: 0,
+    gridRank: 60,
     virtualField: false,
     colSize: 64,
     reverseSort: false,
@@ -137,7 +137,7 @@ export const BIZ_MENU_COLUMNS = [
   {
     nullable: false,
     sortRank: 0,
-    gridRank: 0,
+    gridRank: 70,
     virtualField: false,
     colSize: 64,
     reverseSort: false,
