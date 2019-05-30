@@ -1,8 +1,8 @@
 import { Company } from './company'
 import { NewCompany } from './new-company'
 import { CompanyPatch } from './company-patch'
-import { Filter } from './filter'
 import { CompanyList } from './company-list'
+import { Filter, Pagination } from '@things-factory/shell'
 
 export const Mutation = `
   createCompany (
@@ -20,8 +20,8 @@ export const Mutation = `
 `
 
 export const Query = `
-  companies(filters: [Filter]): CompanyList
+  companies(filters: [Filter], pagination: Pagination): CompanyList
   company(id: String!): Company
 `
 
-export const Types = [Company, NewCompany, CompanyPatch, Filter, CompanyList]
+export const Types = [Company, NewCompany, CompanyPatch, CompanyList, Filter, Pagination]
