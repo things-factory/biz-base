@@ -22,7 +22,7 @@ export const companiesResolver = {
       })
     }
 
-    if (pagination && pagination.skip && pagination.take) {
+    if (pagination && pagination.skip >= 0 && pagination.take >= 0) {
       queryBuilder.skip(pagination.skip)
       queryBuilder.take(pagination.take)
     }
