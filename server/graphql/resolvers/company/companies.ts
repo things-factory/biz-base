@@ -1,13 +1,14 @@
-import { conditionBuilder, Filter, Pagination } from '@things-factory/shell'
+import { conditionBuilder, ListParams } from '@things-factory/shell'
 import { getRepository } from 'typeorm'
 import { Company } from '../../../entities'
 
 export const companiesResolver = {
-  async companies(_: any, params: { filters: Array<Filter>; pagination: Pagination }, context: any, args: any) {
+  async companies(_: any, params: ListParams, context: any, args: any) {
     const queryBuilder = getRepository(Company).createQueryBuilder()
 
     const filters = params.filters
     const pagination = params.pagination
+    const sortings = params.sortings
 
     if (filters && filters.length > 0) {
       filters.forEach((filter, index: number) => {
@@ -25,6 +26,16 @@ export const companiesResolver = {
     if (pagination && pagination.skip >= 0 && pagination.take >= 0) {
       queryBuilder.skip(pagination.skip)
       queryBuilder.take(pagination.take)
+    }
+
+    if (sortings && sortings.length > 0) {
+      sortings.forEach((sorting, index) => {
+        if (index === 0) {
+          queryBuilder.orderBy(sorting.name, sorting.desc ? 'DESC' : 'ASC')
+        } else {
+          queryBuilder.addOrderBy(sorting.name, sorting.desc ? 'DESC' : 'ASC')
+        }
+      })
     }
 
     const [items, total] = await queryBuilder.getManyAndCount()
