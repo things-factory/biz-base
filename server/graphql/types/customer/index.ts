@@ -1,6 +1,8 @@
+import { Filter, Pagination, Sorting } from '@things-factory/shell'
 import { Customer } from './customer'
-import { NewCustomer } from './new-customer'
+import { CustomerList } from './customer-list'
 import { CustomerPatch } from './customer-patch'
+import { NewCustomer } from './new-customer'
 
 export const Mutation = `
   createCustomer (
@@ -18,8 +20,8 @@ export const Mutation = `
 `
 
 export const Query = `
-  customers: [Customer]
+  customers(filters: [Filter], pagination: Pagination, sortings: [Sorting]): CustomerList
   customer(id: String!): Customer
 `
 
-export const Types = [Customer, NewCustomer, CustomerPatch]
+export const Types = [Filter, Pagination, Sorting, Customer, NewCustomer, CustomerPatch, CustomerList]

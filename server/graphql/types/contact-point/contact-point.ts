@@ -5,5 +5,6 @@ export const ContactPoint = gql`
     id: String
     name: String
     description: String
+    email: String
   }
 `

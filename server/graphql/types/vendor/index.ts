@@ -1,5 +1,7 @@
-import { Vendor } from './vendor'
+import { Filter, Pagination, Sorting } from '@things-factory/shell'
 import { NewVendor } from './new-vendor'
+import { Vendor } from './vendor'
+import { VendorList } from './vendor-list'
 import { VendorPatch } from './vendor-patch'
 
 export const Mutation = `
@@ -18,8 +20,8 @@ export const Mutation = `
 `
 
 export const Query = `
-  vendors: [Vendor]
+  vendors(filters: [Filter], pagination: Pagination, sortings: [Sorting]): VendorList
   vendor(id: String!): Vendor
 `
 
-export const Types = [Vendor, NewVendor, VendorPatch]
+export const Types = [Filter, Pagination, Sorting, Vendor, NewVendor, VendorPatch, VendorList]

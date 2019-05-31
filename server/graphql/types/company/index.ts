@@ -1,8 +1,8 @@
-import { Company } from './company'
-import { NewCompany } from './new-company'
-import { CompanyPatch } from './company-patch'
-import { CompanyList } from './company-list'
 import { Filter, Pagination, Sorting } from '@things-factory/shell'
+import { Company } from './company'
+import { CompanyList } from './company-list'
+import { CompanyPatch } from './company-patch'
+import { NewCompany } from './new-company'
 
 export const Mutation = `
   createCompany (

@@ -1,6 +1,8 @@
+import { Filter, Pagination, Sorting } from '@things-factory/shell'
 import { Bizplace } from './bizplace'
-import { NewBizplace } from './new-bizplace'
+import { BizplaceList } from './bizplace-list'
 import { BizplacePatch } from './bizplace-patch'
+import { NewBizplace } from './new-bizplace'
 
 export const Mutation = `
   createBizplace (
@@ -18,8 +20,8 @@ export const Mutation = `
 `
 
 export const Query = `
-  bizplaces: [Bizplace]
+  bizplaces(filters: [Filter], pagination: Pagination, sortings: [Sorting]): BizplaceList
   bizplace(id: String!): Bizplace
 `
 
-export const Types = [Bizplace, NewBizplace, BizplacePatch]
+export const Types = [Filter, Pagination, Sorting, Bizplace, NewBizplace, BizplacePatch, BizplaceList]
