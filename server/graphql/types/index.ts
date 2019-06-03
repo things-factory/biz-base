@@ -3,15 +3,24 @@ import * as Company from './company'
 import * as ContactPoint from './contact-point'
 import * as Customer from './customer'
 import * as Vendor from './vendor'
+import * as Worker from './worker'
 
-export const queries = [Bizplace.Query, Company.Query, ContactPoint.Query, Customer.Query, Vendor.Query]
+export const queries = [Bizplace.Query, Company.Query, ContactPoint.Query, Customer.Query, Vendor.Query, Worker.Query]
 
 export const mutations = [
   Bizplace.Mutation,
   Company.Mutation,
   ContactPoint.Mutation,
   Customer.Mutation,
-  Vendor.Mutation
+  Vendor.Mutation,
+  Worker.Mutation
 ]
 
-export const types = [...Bizplace.Types, ...Company.Types, ...ContactPoint.Types, ...Customer.Types, ...Vendor.Types]
+export const types = [
+  ...Bizplace.Types,
+  ...Company.Types,
+  ...ContactPoint.Types,
+  ...Customer.Types,
+  ...Vendor.Types,
+  ...Worker.Types
+]
