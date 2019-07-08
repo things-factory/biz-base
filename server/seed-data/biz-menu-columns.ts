@@ -15,7 +15,7 @@ export const BIZ_MENU_COLUMNS = [
     menuName: 'Company',
     rank: 10,
     extField: false,
-    term: 'label.id',
+    term: 'field.id',
     gridWidth: 0
   },
   {
@@ -34,7 +34,7 @@ export const BIZ_MENU_COLUMNS = [
     menuName: 'Company',
     rank: 10,
     extField: false,
-    term: 'label.name',
+    term: 'field.name',
     gridWidth: 100
   },
   {
@@ -53,7 +53,7 @@ export const BIZ_MENU_COLUMNS = [
     menuName: 'Company',
     rank: 10,
     extField: false,
-    term: 'label.description',
+    term: 'field.description',
     gridWidth: 100
   },
   {
@@ -72,7 +72,7 @@ export const BIZ_MENU_COLUMNS = [
     menuName: 'Company',
     rank: 10,
     extField: false,
-    term: 'label.countryCode',
+    term: 'field.countryCode',
     gridWidth: 100
   },
   {
@@ -91,7 +91,7 @@ export const BIZ_MENU_COLUMNS = [
     menuName: 'Company',
     rank: 10,
     extField: false,
-    term: 'label.brn',
+    term: 'field.brn',
     gridWidth: 100
   },
   {
@@ -110,7 +110,7 @@ export const BIZ_MENU_COLUMNS = [
     menuName: 'Company',
     rank: 10,
     extField: false,
-    term: 'label.address',
+    term: 'field.address',
     gridWidth: 100
   },
   {
@@ -129,7 +129,7 @@ export const BIZ_MENU_COLUMNS = [
     menuName: 'Company',
     rank: 10,
     extField: false,
-    term: 'label.bizplaces',
+    term: 'field.bizplaces',
     refType: 'Entity',
     refName: 'Bizplace',
     gridWidth: 100
@@ -150,7 +150,7 @@ export const BIZ_MENU_COLUMNS = [
     menuName: 'Company',
     rank: 10,
     extField: false,
-    term: 'label.state',
+    term: 'field.state',
     gridWidth: 100
   }
 ]
