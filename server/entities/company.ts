@@ -1,10 +1,19 @@
-import { BaseEntity } from '@things-factory/shell'
-import { Column, Entity, Index, PrimaryGeneratedColumn, OneToMany } from 'typeorm'
+import { User } from '@things-factory/auth-base'
+import {
+  Column,
+  CreateDateColumn,
+  Entity,
+  Index,
+  ManyToOne,
+  OneToMany,
+  PrimaryGeneratedColumn,
+  UpdateDateColumn
+} from 'typeorm'
 import { Bizplace } from './bizplace'
 
 @Entity('companies')
 @Index('ix_companies_0', (company: Company) => [company.name], { unique: true })
-export class Company extends BaseEntity {
+export class Company {
   @PrimaryGeneratedColumn('uuid')
   id: string
 
@@ -32,4 +41,20 @@ export class Company extends BaseEntity {
     nullable: true
   })
   state: string
+
+  @ManyToOne(type => User, {
+    nullable: true
+  })
+  creator: User
+
+  @ManyToOne(type => User, {
+    nullable: true
+  })
+  updater: User
+
+  @CreateDateColumn()
+  createdAt: Date
+
+  @UpdateDateColumn()
+  updatedAt: Date
 }

@@ -1,12 +1,16 @@
-import { DomainBaseEntity } from '@things-factory/shell'
-import { Column, Entity, Index, ManyToOne, PrimaryGeneratedColumn } from 'typeorm'
+import { User } from '@things-factory/auth-base'
+import { Domain } from '@things-factory/shell'
+import { Column, CreateDateColumn, Entity, Index, ManyToOne, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm'
 import { Bizplace } from './bizplace'
 
 @Entity('vendors')
 @Index('ix_vendors_0', (vendor: Vendor) => [vendor.name], { unique: true })
-export class Vendor extends DomainBaseEntity {
+export class Vendor {
   @PrimaryGeneratedColumn('uuid')
   id: string
+
+  @ManyToOne(type => Domain)
+  domain: Domain
 
   @Column('text')
   name: string
@@ -18,4 +22,20 @@ export class Vendor extends DomainBaseEntity {
 
   @ManyToOne(type => Bizplace)
   bizplace: Bizplace
+
+  @ManyToOne(type => User, {
+    nullable: true
+  })
+  creator: User
+
+  @ManyToOne(type => User, {
+    nullable: true
+  })
+  updater: User
+
+  @CreateDateColumn()
+  createdAt: Date
+
+  @UpdateDateColumn()
+  updatedAt: Date
 }
