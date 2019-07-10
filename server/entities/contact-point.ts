@@ -3,7 +3,7 @@ import { Domain } from '@things-factory/shell'
 import { Column, CreateDateColumn, Entity, Index, ManyToOne, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm'
 import { Bizplace } from './bizplace'
 
-@Entity('contact-points')
+@Entity()
 @Index('ix_contact_points_0', (contactPoint: ContactPoint) => [contactPoint.name, contactPoint.email], { unique: true })
 export class ContactPoint {
   @PrimaryGeneratedColumn('uuid')
