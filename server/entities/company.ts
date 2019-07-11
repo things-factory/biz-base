@@ -17,27 +17,27 @@ export class Company {
   @PrimaryGeneratedColumn('uuid')
   id: string
 
-  @Column('text')
+  @Column()
   name: string
 
-  @Column('text', {
+  @Column({
     nullable: true
   })
   description: string
 
-  @Column('text')
+  @Column()
   countryCode: string
 
-  @Column('text')
+  @Column()
   brn: string
 
-  @Column('text')
+  @Column()
   address: string
 
   @OneToMany(type => Bizplace, bizplace => bizplace.parent)
   bizplaces: Bizplace[]
 
-  @Column('text', {
+  @Column({
     nullable: true
   })
   state: string

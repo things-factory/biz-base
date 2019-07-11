@@ -11,13 +11,13 @@ export class Worker {
   @ManyToOne(type => Domain)
   domain: Domain
 
-  @Column('text')
+  @Column()
   name: string
 
-  @Column('text')
+  @Column()
   type: string
 
-  @Column('text', {
+  @Column({
     nullable: true
   })
   description: string

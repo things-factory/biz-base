@@ -15,13 +15,13 @@ export class ContactPoint {
   @ManyToOne(type => Bizplace)
   bizplace: Bizplace
 
-  @Column('text')
+  @Column()
   name: string
 
-  @Column('text')
+  @Column()
   email: string
 
-  @Column('text', {
+  @Column({
     nullable: true
   })
   description: string

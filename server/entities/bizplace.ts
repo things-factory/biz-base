@@ -11,24 +11,24 @@ export class Bizplace {
   @ManyToOne(type => Company, company => company.bizplaces)
   parent: Company
 
-  @Column('text')
+  @Column()
   name: string
 
-  @Column('text', {
+  @Column({
     nullable: true
   })
   description: string
 
-  @Column('text')
+  @Column()
   address: string
 
-  @Column('text')
+  @Column()
   postalCode: string
 
-  @Column('text')
+  @Column()
   latlng: string
 
-  @Column('text', {
+  @Column({
     nullable: true
   })
   state: string
