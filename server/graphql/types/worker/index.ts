@@ -10,16 +10,16 @@ export const Mutation = `
   ): Worker
 
   updateWorker (
-    id: String!
+    name: String!
     patch: WorkerPatch!
   ): Worker
 
   deleteWorker (
-    id: String!
+    name: String!
   ): Worker
 
   publishWorker (
-    id: String!
+    name: String!
   ): Worker
 `
 

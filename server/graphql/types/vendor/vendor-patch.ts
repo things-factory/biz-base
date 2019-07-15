@@ -4,5 +4,6 @@ export const VendorPatch = gql`
   input VendorPatch {
     name: String
     description: String
+    bizplace: String
   }
 `

@@ -2,11 +2,10 @@ import { getRepository } from 'typeorm'
 import { Worker } from '../../../entities'
 
 export const workerResolver = {
-  async worker(_, { id }, context, info) {
-    const repository = getRepository(Worker)
-
-    return await repository.findOne(
-      { id }
-    )
+  async worker(_: any, { name }, context: any) {
+    return await getRepository(Worker).findOne({
+      where: { domain: context.domain, name },
+      relations: ['domain', 'creator', 'updater']
+    })
   }
 }

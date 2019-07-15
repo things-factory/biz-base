@@ -10,18 +10,18 @@ export const Mutation = `
   ): Bizplace
 
   updateBizplace (
-    id: String!
+    name: String!
     patch: BizplacePatch!
   ): Bizplace
 
   deleteBizplace (
-    id: String!
+    name: String!
   ): Bizplace
 `
 
 export const Query = `
   bizplaces(filters: [Filter], pagination: Pagination, sortings: [Sorting]): BizplaceList
-  bizplace(id: String!): Bizplace
+  bizplace(name: String!): Bizplace
 `
 
 export const Types = [Filter, Pagination, Sorting, Bizplace, NewBizplace, BizplacePatch, BizplaceList]

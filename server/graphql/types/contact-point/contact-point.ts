@@ -3,8 +3,14 @@ import { gql } from 'apollo-server-koa'
 export const ContactPoint = gql`
   type ContactPoint {
     id: String
+    domain: Domain
+    bizplace: Bizplace
     name: String
-    description: String
     email: String
+    description: String
+    creator: User
+    updater: User
+    createdAt: String
+    updatedAt: String
   }
 `

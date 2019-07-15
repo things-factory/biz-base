@@ -10,18 +10,18 @@ export const Mutation = `
   ): Company
 
   updateCompany (
-    id: String!
+    name: String!
     patch: CompanyPatch!
   ): Company
 
   deleteCompany (
-    id: String!
+    name: String!
   ): Company
 `
 
 export const Query = `
   companies(filters: [Filter], pagination: Pagination, sortings: [Sorting]): CompanyList
-  company(id: String!): Company
+  company(name: String!): Company
 `
 
 export const Types = [Company, NewCompany, CompanyPatch, CompanyList, Filter, Pagination, Sorting]

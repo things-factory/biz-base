@@ -11,6 +11,7 @@ export class Customer {
 
   @ManyToOne(type => Domain)
   domain: Domain
+
   @Column()
   name: string
 

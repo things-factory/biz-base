@@ -10,18 +10,18 @@ export const Mutation = `
   ): Vendor
 
   updateVendor (
-    id: String!
+    name: String!
     patch: VendorPatch!
   ): Vendor
 
   deleteVendor (
-    id: String!
+    name: String!
   ): Vendor
 `
 
 export const Query = `
   vendors(filters: [Filter], pagination: Pagination, sortings: [Sorting]): VendorList
-  vendor(id: String!): Vendor
+  vendor(name: String!): Vendor
 `
 
 export const Types = [Filter, Pagination, Sorting, Vendor, NewVendor, VendorPatch, VendorList]

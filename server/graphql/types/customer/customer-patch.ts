@@ -4,5 +4,6 @@ export const CustomerPatch = gql`
   input CustomerPatch {
     name: String
     description: String
+    bizplace: String!
   }
 `

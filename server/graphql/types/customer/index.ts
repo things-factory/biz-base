@@ -10,18 +10,18 @@ export const Mutation = `
   ): Customer
 
   updateCustomer (
-    id: String!
+    name: String!
     patch: CustomerPatch!
   ): Customer
 
   deleteCustomer (
-    id: String!
+    name: String!
   ): Customer
 `
 
 export const Query = `
   customers(filters: [Filter], pagination: Pagination, sortings: [Sorting]): CustomerList
-  customer(id: String!): Customer
+  customer(name: String!): Customer
 `
 
 export const Types = [Filter, Pagination, Sorting, Customer, NewCustomer, CustomerPatch, CustomerList]

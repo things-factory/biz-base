@@ -2,9 +2,10 @@ import { getRepository } from 'typeorm'
 import { ContactPoint } from '../../../entities'
 
 export const contactPointResolver = {
-  async contactPoint(_, { name }, context, info) {
-    const repository = getRepository(ContactPoint)
-
-    return await repository.findOne({ name })
+  async contactPoint(_: any, { name }, context: any) {
+    return await getRepository(ContactPoint).findOne({
+      where: { domain: context.domain, name },
+      relations: ['domain', 'bizplace', 'creator', 'updater']
+    })
   }
 }

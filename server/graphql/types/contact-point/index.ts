@@ -10,18 +10,18 @@ export const Mutation = `
   ): ContactPoint
 
   updateContactPoint (
-    id: String!
+    name: String!
     patch: ContactPointPatch!
   ): ContactPoint
 
   deleteContactPoint (
-    id: String!
+    name: String!
   ): ContactPoint
 `
 
 export const Query = `
   contactPoints(filters: [Filter], pagination: Pagination, sortings: [Sorting]): ContactPointList
-  contactPoint(id: String!): ContactPoint
+  contactPoint(name: String!): ContactPoint
 `
 
 export const Types = [Filter, Pagination, Sorting, ContactPoint, NewContactPoint, ContactPointPatch, ContactPointList]

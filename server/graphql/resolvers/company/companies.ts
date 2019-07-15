@@ -3,10 +3,14 @@ import { getRepository } from 'typeorm'
 import { Company } from '../../../entities'
 
 export const companiesResolver = {
-  async companies(_: any, params: ListParam, context: any) {
+  async companies(_: any, params: ListParam) {
     const queryBuilder = getRepository(Company).createQueryBuilder()
     buildQuery(queryBuilder, params)
-    const [items, total] = await queryBuilder.getManyAndCount()
+    const [items, total] = await queryBuilder
+      .leftJoinAndSelect('Company.bizplaces', 'Bizplaces')
+      .leftJoinAndSelect('Company.creator', 'Creator')
+      .leftJoinAndSelect('Company.updater', 'Updater')
+      .getManyAndCount()
 
     return { items, total }
   }
