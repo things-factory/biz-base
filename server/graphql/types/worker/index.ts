@@ -17,10 +17,6 @@ export const Mutation = `
   deleteWorker (
     name: String!
   ): Worker
-
-  publishWorker (
-    name: String!
-  ): Worker
 `
 
 export const Query = `
