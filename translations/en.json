@@ -1,0 +1,8 @@
+{
+  "field.address": "address",
+  "field.bizplaces": "business place",
+  "field.brn": "business registration number",
+  "field.countryCode": "country code",
+  "field.id": "id",
+  "field.state": "state"
+}
