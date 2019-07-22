@@ -7,9 +7,9 @@ export const workersResolver = {
     const queryBuilder = getRepository(Worker).createQueryBuilder()
     buildQuery(queryBuilder, params)
     const [items, total] = await queryBuilder
-      .leftJoinAndSelect('Woerker.domain', 'Domain')
-      .leftJoinAndSelect('Woerker.creator', 'Creator')
-      .leftJoinAndSelect('Woerker.updater', 'Updater')
+      .leftJoinAndSelect('Worker.domain', 'Domain')
+      .leftJoinAndSelect('Worker.creator', 'Creator')
+      .leftJoinAndSelect('Worker.updater', 'Updater')
       .getManyAndCount()
 
     return { items, total }
