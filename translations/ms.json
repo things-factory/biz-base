@@ -7,5 +7,6 @@
   "field.state": "negeri",
   "field.postal_code": "postal_code",
   "field.latlng": "latlng",
-  "field.email": "e-mail"
+  "field.email": "e-mail",
+  "field.company": "syarikat"
 }
