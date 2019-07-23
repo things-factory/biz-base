@@ -5,7 +5,8 @@
   "field.country_code": "국가 코드",
   "field.id": "아이디",
   "field.state": "국가",
-  "field.postal_code": "postal_code",
+  "field.postal_code": "우편번호",
   "field.latlng": "latlng",
-  "field.email": "이메일"
+  "field.email": "이메일",
+  "field.company": "회사"
 }
