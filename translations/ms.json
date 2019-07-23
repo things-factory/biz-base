@@ -2,7 +2,10 @@
   "field.address": "alamat",
   "field.bizplaces": "lokasi perniagaan",
   "field.brn": "lesen perniagaan",
-  "field.countryCode": "kod negara",
+  "field.country_code": "country code",
   "field.id": "id",
-  "field.state": "negeri"
+  "field.state": "negeri",
+  "field.postal_code": "postal_code",
+  "field.latlng": "latlng",
+  "field.email": "e-mail"
 }
