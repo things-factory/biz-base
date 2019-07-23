@@ -2,7 +2,10 @@
   "field.address": "주소",
   "field.bizplaces": "business place",
   "field.brn": "business registration number",
-  "field.countryCode": "국가코드",
-  "field.id": "id",
-  "field.state": "국가"
+  "field.country_code": "국가 코드",
+  "field.id": "아이디",
+  "field.state": "국가",
+  "field.postal_code": "postal_code",
+  "field.latlng": "latlng",
+  "field.email": "이메일"
 }

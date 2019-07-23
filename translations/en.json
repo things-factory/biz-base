@@ -2,7 +2,10 @@
   "field.address": "address",
   "field.bizplaces": "business place",
   "field.brn": "business registration number",
-  "field.countryCode": "country code",
+  "field.country_code": "country code",
   "field.id": "id",
-  "field.state": "state"
+  "field.state": "state",
+  "field.postal_code": "postal_code",
+  "field.latlng": "latlng",
+  "field.email": "e-mail"
 }
