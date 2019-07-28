@@ -3,7 +3,7 @@ import { gql } from 'apollo-server-koa'
 export const Worker = gql`
   type Worker {
     id: String
-    domain: Domain
+    bizplace: Bizplace
     name: String
     type: String
     description: String

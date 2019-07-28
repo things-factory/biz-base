@@ -8,6 +8,7 @@ export const workersResolver = {
     buildQuery(queryBuilder, params)
     const [items, total] = await queryBuilder
       .leftJoinAndSelect('Worker.domain', 'Domain')
+      .leftJoinAndSelect('Worker.bizplace', 'Bizplace')
       .leftJoinAndSelect('Worker.creator', 'Creator')
       .leftJoinAndSelect('Worker.updater', 'Updater')
       .getManyAndCount()

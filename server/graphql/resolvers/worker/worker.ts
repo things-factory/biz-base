@@ -5,7 +5,7 @@ export const workerResolver = {
   async worker(_: any, { name }, context: any) {
     return await getRepository(Worker).findOne({
       where: { domain: context.domain, name },
-      relations: ['domain', 'creator', 'updater']
+      relations: ['domain', 'bizplace', 'creator', 'updater']
     })
   }
 }
