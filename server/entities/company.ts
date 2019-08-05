@@ -34,13 +34,18 @@ export class Company {
   @Column()
   address: string
 
-  @OneToMany(type => Bizplace, bizplace => bizplace.parent)
+  @Column({
+    nullable: true
+  })
+  type: string
+
+  @OneToMany(type => Bizplace, bizplace => bizplace.company)
   bizplaces: Bizplace[]
 
   @Column({
     nullable: true
   })
-  state: string
+  status: string
 
   @ManyToOne(type => User, {
     nullable: true

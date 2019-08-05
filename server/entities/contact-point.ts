@@ -18,8 +18,20 @@ export class ContactPoint {
   @Column()
   name: string
 
-  @Column()
+  @Column({
+    nullable: true
+  })
   email: string
+
+  @Column({
+    nullable: true
+  })
+  fax: string
+
+  @Column({
+    nullable: true
+  })
+  phone: string
 
   @Column({
     nullable: true

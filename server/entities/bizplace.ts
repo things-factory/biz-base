@@ -1,4 +1,5 @@
 import { User } from '@things-factory/auth-base'
+import { Domain } from '@things-factory/shell'
 import { Column, CreateDateColumn, Entity, Index, ManyToOne, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm'
 import { Company } from './company'
 
@@ -8,8 +9,11 @@ export class Bizplace {
   @PrimaryGeneratedColumn('uuid')
   id: string
 
+  @ManyToOne(type => Domain)
+  domain: Domain
+
   @ManyToOne(type => Company, company => company.bizplaces)
-  parent: Company
+  company: Company
 
   @Column()
   name: string
@@ -31,7 +35,7 @@ export class Bizplace {
   @Column({
     nullable: true
   })
-  state: string
+  status: string
 
   @ManyToOne(type => User, {
     nullable: true
