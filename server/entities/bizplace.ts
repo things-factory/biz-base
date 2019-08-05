@@ -1,7 +1,17 @@
 import { User } from '@things-factory/auth-base'
 import { Domain } from '@things-factory/shell'
-import { Column, CreateDateColumn, Entity, Index, ManyToOne, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm'
+import {
+  Column,
+  CreateDateColumn,
+  Entity,
+  Index,
+  ManyToOne,
+  OneToMany,
+  PrimaryGeneratedColumn,
+  UpdateDateColumn
+} from 'typeorm'
 import { Company } from './company'
+import { ContactPoint } from './contact-point'
 
 @Entity('bizplaces')
 @Index('ix_bizplaces_0', (bizplace: Bizplace) => [bizplace.name], { unique: true })
@@ -14,6 +24,9 @@ export class Bizplace {
 
   @ManyToOne(type => Company, company => company.bizplaces)
   company: Company
+
+  @OneToMany(type => ContactPoint, contactPoint => contactPoint.bizplace)
+  contactPoints: ContactPoint[]
 
   @Column()
   name: string

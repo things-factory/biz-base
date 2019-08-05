@@ -5,6 +5,8 @@ export const NewContactPoint = gql`
     bizplace: String!
     name: String!
     email: String!
+    fax: String
+    phone: String
     description: String
   }
 `
