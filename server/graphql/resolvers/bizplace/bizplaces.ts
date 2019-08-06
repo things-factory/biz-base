@@ -3,9 +3,9 @@ import { getRepository } from 'typeorm'
 import { Bizplace } from '../../../entities'
 
 export const bizplacesResolver = {
-  async bizplaces(_: any, params: ListParam) {
+  async bizplaces(_: any, params: ListParam, context: any) {
     const queryBuilder = getRepository(Bizplace).createQueryBuilder()
-    buildQuery(queryBuilder, params)
+    buildQuery(queryBuilder, params, context)
     const [items, total] = await queryBuilder
       .leftJoinAndSelect('Bizplace.creator', 'Creator')
       .leftJoinAndSelect('Bizplace.updater', 'Updater')

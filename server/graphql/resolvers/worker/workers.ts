@@ -3,9 +3,9 @@ import { getRepository } from 'typeorm'
 import { Worker } from '../../../entities'
 
 export const workersResolver = {
-  async workers(_: any, params: ListParam) {
+  async workers(_: any, params: ListParam, context: any) {
     const queryBuilder = getRepository(Worker).createQueryBuilder()
-    buildQuery(queryBuilder, params)
+    buildQuery(queryBuilder, params, context)
     const [items, total] = await queryBuilder
       .leftJoinAndSelect('Worker.domain', 'Domain')
       .leftJoinAndSelect('Worker.bizplace', 'Bizplace')
