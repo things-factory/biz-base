@@ -8,6 +8,6 @@ export const NewCompany = gql`
     brn: String!
     address: String!
     bizplaces: [String]
-    state: String!
+    status: String!
   }
 `

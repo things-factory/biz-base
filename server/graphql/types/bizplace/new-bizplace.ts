@@ -8,6 +8,6 @@ export const NewBizplace = gql`
     address: String!
     postalCode: String!
     latlng: String!
-    state: String
+    status: String
   }
 `

@@ -9,7 +9,7 @@ export const Company = gql`
     brn: String
     address: String
     bizplaces: [Bizplace]
-    state: String
+    status: String
     creator: User
     updater: User
     createdAt: String
