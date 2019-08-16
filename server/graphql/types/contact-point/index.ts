@@ -12,7 +12,11 @@ export const Mutation = `
   updateContactPoint (
     name: String!
     patch: ContactPointPatch!
-  ): ContactPoint
+  ): [ContactPoint]
+
+  updateMultipleContactPoint (
+    patches: [ContactPointPatch]!
+  ): [ContactPoint]
 
   deleteContactPoint (
     name: String!

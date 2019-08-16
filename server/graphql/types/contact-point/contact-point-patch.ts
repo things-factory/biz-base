@@ -8,5 +8,6 @@ export const ContactPointPatch = gql`
     fax: String
     phone: String
     description: String
+    cuFlag: String
   }
 `
