@@ -7,7 +7,8 @@ export const createBizplace = {
       domain: context.domain,
       creator: context.state.user,
       updater: context.state.user,
-      ...bizplace
+      ...bizplace,
+      company: { ...bizplace.company }
     })
   }
 }

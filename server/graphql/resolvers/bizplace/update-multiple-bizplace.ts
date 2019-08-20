@@ -26,7 +26,8 @@ export const updateMultipleBizplace = {
           domain: context.domain,
           creator: context.state.user,
           updater: context.state.user,
-          ...bizplace
+          ...bizplace,
+          company: { ...bizplace.company }
         })
 
         results = [
@@ -43,11 +44,15 @@ export const updateMultipleBizplace = {
       for (let i = 0; i < _updateRecords.length; i++) {
         const patch = _updateRecords[i]
 
-        const bizplace = await repository.findOne({ where: { name: patch.name } })
+        const bizplace = await repository.findOne({ where: { name: patch.name }, relations: ['company', 'updater'] })
         const result = await repository.save({
           ...bizplace,
           ...patch,
-          updater: context.state.user
+          updater: context.state.user,
+          company: {
+            ...bizplace.company,
+            ...patch.company
+          }
         })
 
         results = [
