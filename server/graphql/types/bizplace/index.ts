@@ -21,6 +21,10 @@ export const Mutation = `
   deleteBizplace (
     name: String!
   ): Bizplace
+
+  deleteBizplaces (
+    names: [String]!
+  ): Bizplace
 `
 
 export const Query = `

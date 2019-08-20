@@ -5,6 +5,7 @@ import { updateBizplace } from './update-bizplace'
 import { updateMultipleBizplace } from './update-multiple-bizplace'
 import { createBizplace } from './create-bizplace'
 import { deleteBizplace } from './delete-bizplace'
+import { deleteBizplaces } from './delete-bizplaces'
 
 export const Query = {
   ...bizplaceResolver,
@@ -15,5 +16,6 @@ export const Mutation = {
   ...updateBizplace,
   ...updateMultipleBizplace,
   ...createBizplace,
-  ...deleteBizplace
+  ...deleteBizplace,
+  ...deleteBizplaces
 }
