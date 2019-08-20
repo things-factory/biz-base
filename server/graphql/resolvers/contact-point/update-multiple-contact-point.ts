@@ -33,7 +33,7 @@ export const updateMultipleContactPoint = {
 
       results = [
         ...results,
-        result.map(item => {
+        ...result.map(item => {
           return {
             ...item,
             cuFlag: '+'

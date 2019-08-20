@@ -32,7 +32,7 @@ export const updateMultipleBizplace = {
 
       results = [
         ...results,
-        result.map(item => {
+        ...result.map(item => {
           return {
             ...item,
             cuFlag: '+'
