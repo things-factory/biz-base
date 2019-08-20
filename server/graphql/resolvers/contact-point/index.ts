@@ -5,6 +5,7 @@ import { updateContactPoint } from './update-contact-point'
 import { updateMultipleContactPoint } from './update-multiple-contact-point'
 import { createContactPoint } from './create-contact-point'
 import { deleteContactPoint } from './delete-contact-point'
+import { deleteContactPoints } from './delete-contact-points'
 
 export const Query = {
   ...contactPointResolver,
@@ -15,5 +16,6 @@ export const Mutation = {
   ...updateContactPoint,
   ...updateMultipleContactPoint,
   ...createContactPoint,
-  ...deleteContactPoint
+  ...deleteContactPoint,
+  ...deleteContactPoints
 }

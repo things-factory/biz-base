@@ -26,7 +26,8 @@ export const updateMultipleContactPoint = {
           domain: context.domain,
           creator: context.state.user,
           updater: context.state.user,
-          ...contactPoint
+          ...contactPoint,
+          bizplace: { ...contactPoint.bizplace }
         })
 
         results = [
@@ -43,11 +44,15 @@ export const updateMultipleContactPoint = {
       for (let i = 0; i < _updateRecords.length; i++) {
         const patch = _updateRecords[i]
 
-        const contactPoint = await repository.findOne({ where: { name: patch.name } })
+        const contactPoint = await repository.findOne({ where: { id: patch.id }, relations: ['bizplace', 'updater'] })
         const result = await repository.save({
           ...contactPoint,
           ...patch,
-          updater: context.state.user
+          updater: context.state.user,
+          bizplace: {
+            ...contactPoint.bizplace,
+            ...patch.bizplace
+          }
         })
 
         results = [
