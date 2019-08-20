@@ -4,8 +4,9 @@ import { Bizplace } from '../../../entities'
 export const createBizplace = {
   async createBizplace(_: any, { bizplace }, context: any) {
     return await getRepository(Bizplace).save({
-      creatorId: context.state.user.id,
-      updaterId: context.state.user.id,
+      domain: context.domain,
+      creator: context.state.user,
+      updater: context.state.user,
       ...bizplace
     })
   }

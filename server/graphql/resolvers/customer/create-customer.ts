@@ -6,8 +6,8 @@ export const createCustomer = {
     return await getRepository(Customer).save({
       domain: context.domain,
       ...customer,
-      creatorId: context.state.user.id,
-      updaterId: context.state.user.id
+      creator: context.state.user,
+      updater: context.state.user
     })
   }
 }

@@ -7,8 +7,8 @@ export const createWorker = {
       domain: context.domain,
       ...worker,
       bizplace: await getRepository(Bizplace).findOne({ where: { name: worker.bizplace } }),
-      creatorId: context.state.user.id,
-      updaterId: context.state.user.id
+      creator: context.state.user,
+      updater: context.state.user
     })
   }
 }

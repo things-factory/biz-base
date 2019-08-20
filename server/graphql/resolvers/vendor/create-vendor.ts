@@ -6,8 +6,8 @@ export const createVendor = {
     return await getRepository(Vendor).save({
       domain: context.domain,
       ...vendor,
-      creatorId: context.state.user.id,
-      updaterId: context.state.user.id
+      creator: context.state.user,
+      updater: context.state.user
     })
   }
 }

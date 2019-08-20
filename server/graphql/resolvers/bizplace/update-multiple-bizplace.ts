@@ -1,4 +1,4 @@
-import { getRepository, Transaction } from 'typeorm'
+import { getRepository } from 'typeorm'
 import { Bizplace } from '../../../entities'
 
 export const updateMultipleBizplace = {
@@ -20,25 +20,23 @@ export const updateMultipleBizplace = {
     const repository = getRepository(Bizplace)
 
     if (_createRecords.length > 0) {
-      const result = await repository.save(
-        _createRecords.map((patch: any) => {
-          return {
-            creatorId: context.state.user.id,
-            updaterId: context.state.user.id,
-            ...patch
-          }
+      for (let i = 0; i < _createRecords.length; i++) {
+        const bizplace = _createRecords[i]
+        const result = await repository.save({
+          domain: context.domain,
+          creator: context.state.user,
+          updater: context.state.user,
+          ...bizplace
         })
-      )
 
-      results = [
-        ...results,
-        ...result.map(item => {
-          return {
-            ...item,
+        results = [
+          ...results,
+          {
+            ...result,
             cuFlag: '+'
           }
-        })
-      ]
+        ]
+      }
     }
 
     if (_updateRecords.length > 0) {
@@ -49,7 +47,7 @@ export const updateMultipleBizplace = {
         const result = await repository.save({
           ...bizplace,
           ...patch,
-          updaterId: context.state.user.id
+          updater: context.state.user
         })
 
         results = [

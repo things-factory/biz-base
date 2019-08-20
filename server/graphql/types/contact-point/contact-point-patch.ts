@@ -3,7 +3,7 @@ import { gql } from 'apollo-server-koa'
 export const ContactPointPatch = gql`
   input ContactPointPatch {
     id: String
-    bizplace: String
+    bizplace: BizplacePatch
     name: String
     email: String
     fax: String

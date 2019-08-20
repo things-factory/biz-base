@@ -25,6 +25,9 @@ export class Bizplace {
   @ManyToOne(type => Company, company => company.bizplaces)
   company: Company
 
+  @Column()
+  companyId: string
+
   @OneToMany(type => ContactPoint, contactPoint => contactPoint.bizplace)
   contactPoints: ContactPoint[]
 
