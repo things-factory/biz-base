@@ -1,8 +1,8 @@
 import { getRepository, Transaction } from 'typeorm'
-import { ContactPoint } from '../../../entities'
+import { Bizplace } from '../../../entities'
 
-export const updateMultipleContactPoint = {
-  async updateMultipleContactPoint(_: any, { patches }, context: any) {
+export const updateMultipleBizplace = {
+  async updateMultipleBizplace(_: any, { patches }, context: any) {
     let results = []
     let _createRecords = []
     let _updateRecords = []
@@ -17,16 +17,15 @@ export const updateMultipleContactPoint = {
       }
     })
 
-    const repository = getRepository(ContactPoint)
+    const repository = getRepository(Bizplace)
 
     if (_createRecords.length > 0) {
       const result = await repository.save(
         _createRecords.map((patch: any) => {
           return {
-            domain: context.domain,
-            ...patch,
             creatorId: context.state.user.id,
-            updaterId: context.state.user.id
+            updaterId: context.state.user.id,
+            ...patch
           }
         })
       )
@@ -46,9 +45,9 @@ export const updateMultipleContactPoint = {
       for (let i = 0; i < _updateRecords.length; i++) {
         const patch = _updateRecords[i]
 
-        const contactPoint = await repository.findOne({ where: { name: patch.name } })
+        const bizplace = await repository.findOne({ where: { name: patch.name } })
         const result = await repository.save({
-          ...contactPoint,
+          ...bizplace,
           ...patch,
           updaterId: context.state.user.id
         })

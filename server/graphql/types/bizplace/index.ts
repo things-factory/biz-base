@@ -14,6 +14,10 @@ export const Mutation = `
     patch: BizplacePatch!
   ): Bizplace
 
+  updateMultipleBizplace (
+    patches: [BizplacePatch]!
+  ): [Bizplace]
+
   deleteBizplace (
     name: String!
   ): Bizplace

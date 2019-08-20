@@ -2,6 +2,7 @@ import { gql } from 'apollo-server-koa'
 
 export const BizplacePatch = gql`
   input BizplacePatch {
+    id: String
     company: String
     name: String
     description: String
@@ -9,5 +10,6 @@ export const BizplacePatch = gql`
     postalCode: String
     latlng: String
     status: String
+    cuFlag: String
   }
 `
