@@ -44,7 +44,7 @@ export const updateMultipleBizplace = {
       for (let i = 0; i < _updateRecords.length; i++) {
         const patch = _updateRecords[i]
 
-        const bizplace = await repository.findOne({ where: { name: patch.name }, relations: ['company', 'updater'] })
+        const bizplace = await repository.findOne({ where: { id: patch.id }, relations: ['company', 'updater'] })
         const result = await repository.save({
           ...bizplace,
           ...patch,
