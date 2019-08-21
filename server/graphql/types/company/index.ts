@@ -14,9 +14,9 @@ export const Mutation = `
     patch: CompanyPatch!
   ): Company
 
-  updateMultipleCompany {
+  updateMultipleCompany (
     patches: [CompanyPatch]!
-  }: [Company]
+  ): [Company]
 
   deleteCompany (
     name: String!
