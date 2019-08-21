@@ -3,16 +3,15 @@ import { ContactPoint, Bizplace } from '../../../entities'
 
 export const createContactPoint = {
   async createContactPoint(_: any, { contactPoint }, context: any) {
-    if (contactPoint.bizplaceId) {
-      contactPoint.bizplace = await getRepository(Bizplace).findOne(contactPoint.bizplaceId)
-      delete contactPoint.bizplaceId
+    if (contactPoint.bizplace && contactPoint.bizplace.id) {
+      contactPoint.bizplace = await getRepository(Bizplace).findOne(contactPoint.bizplace.id)
     }
 
     return await getRepository(ContactPoint).save({
+      ...contactPoint,
       domain: context.domain,
       creator: context.state.user,
-      updater: context.state.user,
-      ...contactPoint
+      updater: context.state.user
     })
   }
 }

@@ -2,7 +2,6 @@ import { Worker } from './worker'
 import { NewWorker } from './new-worker'
 import { WorkerPatch } from './worker-patch'
 import { WorkerList } from './worker-list'
-import { Filter, Pagination, Sorting } from '@things-factory/shell'
 
 export const Mutation = `
   createWorker (
@@ -24,4 +23,4 @@ export const Query = `
   worker(id: String!): Worker
 `
 
-export const Types = [Filter, Pagination, Sorting, Worker, NewWorker, WorkerPatch, WorkerList]
+export const Types = [Worker, NewWorker, WorkerPatch, WorkerList]

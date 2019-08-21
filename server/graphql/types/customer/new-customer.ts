@@ -4,6 +4,6 @@ export const NewCustomer = gql`
   input NewCustomer {
     name: String!
     description: String
-    bizplaceId: String!
+    bizplace: ObjectRef!
   }
 `

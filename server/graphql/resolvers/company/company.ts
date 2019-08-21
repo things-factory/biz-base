@@ -5,7 +5,7 @@ export const companyResolver = {
   async company(_: any, { name }) {
     return await getRepository(Company).findOne({
       where: { name },
-      relations: ['bizplaces', 'creator', 'updater']
+      relations: ['creator', 'updater']
     })
   }
 }

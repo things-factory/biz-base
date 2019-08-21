@@ -4,8 +4,8 @@ import { Vendor } from '../../../entities'
 export const createVendor = {
   async createVendor(_: any, { vendor }, context: any) {
     return await getRepository(Vendor).save({
-      domain: context.domain,
       ...vendor,
+      domain: context.domain,
       creator: context.state.user,
       updater: context.state.user
     })

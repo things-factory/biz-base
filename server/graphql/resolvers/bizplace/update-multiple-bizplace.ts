@@ -13,9 +13,8 @@ export const updateMultipleBizplace = {
       for (let i = 0; i < _createRecords.length; i++) {
         const newRecord = _createRecords[i]
 
-        if (newRecord.companyId) {
-          newRecord.company = await companyRepo.findOne(newRecord.companyId)
-          delete newRecord.companyId
+        if (newRecord.company && newRecord.company.id) {
+          newRecord.company = await companyRepo.findOne(newRecord.company.id)
         }
 
         const result = await bizplaceRepo.save({
@@ -34,9 +33,8 @@ export const updateMultipleBizplace = {
         const newRecord = _updateRecords[i]
         const bizplace = await bizplaceRepo.findOne(newRecord.id)
 
-        if (newRecord.companyId) {
-          newRecord.company = await companyRepo.findOne(newRecord.companyId)
-          delete newRecord.companyId
+        if (newRecord.company && newRecord.company.id) {
+          newRecord.company = await companyRepo.findOne(newRecord.company.id)
         }
 
         const result = await bizplaceRepo.save({

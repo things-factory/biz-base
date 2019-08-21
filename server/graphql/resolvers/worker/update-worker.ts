@@ -1,12 +1,15 @@
 import { getRepository } from 'typeorm'
-import { Worker } from '../../../entities'
+import { Worker, Bizplace } from '../../../entities'
 
 export const updateWorker = {
   async updateWorker(_: any, { name, patch }, context: any) {
-    const repository = getRepository(Worker)
-    const worker = await repository.findOne({ domain: context.domain, name })
+    const worker = await getRepository(Worker).findOne({ domain: context.domain, name })
 
-    return await repository.save({
+    if (patch.bizplace && patch.bizplace.id) {
+      worker.bizplace = await getRepository(Bizplace).findOne(patch.bizplace.id)
+    }
+
+    return await getRepository(Worker).save({
       ...worker,
       ...patch,
       updater: context.state.user

@@ -3,10 +3,9 @@ import { Vendor } from '../../../entities'
 
 export const updateVendor = {
   async updateVendor(_: any, { name, patch }, context: any) {
-    const repository = getRepository(Vendor)
-    const vendor = await repository.findOne({ domain: context.domain, name })
+    const vendor = await getRepository(Vendor).findOne({ domain: context.domain, name })
 
-    return await repository.save({
+    return await getRepository(Vendor).save({
       ...vendor,
       ...patch,
       updater: context.state.user

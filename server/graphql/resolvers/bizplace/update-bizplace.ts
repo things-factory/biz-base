@@ -5,9 +5,8 @@ export const updateBizplace = {
   async updateBizplace(_: any, { name, patch }, context: any) {
     const bizplace = await getRepository(Bizplace).findOne({ domain: context.domain, name })
 
-    if (patch.companyId) {
-      patch.company = await getRepository(Company).findOne(patch.companyId)
-      delete patch.companyId
+    if (patch.company && patch.company.id) {
+      patch.company = await getRepository(Company).findOne(patch.company.id)
     }
 
     return await getRepository(Bizplace).save({

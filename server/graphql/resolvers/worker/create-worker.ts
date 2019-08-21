@@ -3,10 +3,13 @@ import { Worker, Bizplace } from '../../../entities'
 
 export const createWorker = {
   async createWorker(_: any, { worker }, context: any) {
+    if (worker.bizplace && worker.bizplace.id) {
+      worker.bizplace = await getRepository(Bizplace).findOne(worker.bizplace.id)
+    }
+
     return await getRepository(Worker).save({
-      domain: context.domain,
       ...worker,
-      bizplace: await getRepository(Bizplace).findOne({ where: { name: worker.bizplace } }),
+      domain: context.domain,
       creator: context.state.user,
       updater: context.state.user
     })

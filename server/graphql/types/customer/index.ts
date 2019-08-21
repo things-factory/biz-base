@@ -1,4 +1,3 @@
-import { Filter, Pagination, Sorting } from '@things-factory/shell'
 import { Customer } from './customer'
 import { CustomerList } from './customer-list'
 import { CustomerPatch } from './customer-patch'
@@ -24,4 +23,4 @@ export const Query = `
   customer(name: String!): Customer
 `
 
-export const Types = [Filter, Pagination, Sorting, Customer, NewCustomer, CustomerPatch, CustomerList]
+export const Types = [Customer, NewCustomer, CustomerPatch, CustomerList]

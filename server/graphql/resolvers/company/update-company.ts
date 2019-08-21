@@ -3,10 +3,9 @@ import { Company } from '../../../entities'
 
 export const updateCompany = {
   async updateCompany(_: any, { name, patch }, context: any) {
-    const repository = getRepository(Company)
-    const company = await repository.findOne({ name })
+    const company = await getRepository(Company).findOne({ name })
 
-    return await repository.save({
+    return await getRepository(Company).save({
       ...company,
       ...patch,
       updater: context.state.user

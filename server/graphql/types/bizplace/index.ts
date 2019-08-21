@@ -1,4 +1,3 @@
-import { Filter, Pagination, Sorting } from '@things-factory/shell'
 import { Bizplace } from './bizplace'
 import { BizplaceList } from './bizplace-list'
 import { BizplacePatch } from './bizplace-patch'
@@ -32,4 +31,4 @@ export const Query = `
   bizplace(name: String!): Bizplace
 `
 
-export const Types = [Filter, Pagination, Sorting, Bizplace, NewBizplace, BizplacePatch, BizplaceList]
+export const Types = [Bizplace, NewBizplace, BizplacePatch, BizplaceList]

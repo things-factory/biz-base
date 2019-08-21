@@ -1,4 +1,3 @@
-import { Filter, Pagination, Sorting } from '@things-factory/shell'
 import { ContactPoint } from './contact-point'
 import { ContactPointList } from './contact-point-list'
 import { ContactPointPatch } from './contact-point-patch'
@@ -32,4 +31,4 @@ export const Query = `
   contactPoint(name: String!): ContactPoint
 `
 
-export const Types = [Filter, Pagination, Sorting, ContactPoint, NewContactPoint, ContactPointPatch, ContactPointList]
+export const Types = [ContactPoint, NewContactPoint, ContactPointPatch, ContactPointList]

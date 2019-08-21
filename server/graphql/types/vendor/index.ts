@@ -1,4 +1,3 @@
-import { Filter, Pagination, Sorting } from '@things-factory/shell'
 import { NewVendor } from './new-vendor'
 import { Vendor } from './vendor'
 import { VendorList } from './vendor-list'
@@ -24,4 +23,4 @@ export const Query = `
   vendor(name: String!): Vendor
 `
 
-export const Types = [Filter, Pagination, Sorting, Vendor, NewVendor, VendorPatch, VendorList]
+export const Types = [Vendor, NewVendor, VendorPatch, VendorList]

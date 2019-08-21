@@ -5,6 +5,6 @@ export const VendorPatch = gql`
     id: String
     name: String
     description: String
-    bizplaceId: String
+    bizplace: ObjectRef
   }
 `

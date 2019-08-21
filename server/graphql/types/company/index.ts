@@ -1,4 +1,3 @@
-import { Filter, Pagination, Sorting } from '@things-factory/shell'
 import { Company } from './company'
 import { CompanyList } from './company-list'
 import { CompanyPatch } from './company-patch'
@@ -32,4 +31,4 @@ export const Query = `
   company(name: String!): Company
 `
 
-export const Types = [Company, NewCompany, CompanyPatch, CompanyList, Filter, Pagination, Sorting]
+export const Types = [Company, NewCompany, CompanyPatch, CompanyList]

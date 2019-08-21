@@ -3,7 +3,7 @@ import { gql } from 'apollo-server-koa'
 export const BizplacePatch = gql`
   input BizplacePatch {
     id: String
-    companyId: String
+    company: ObjectRef
     name: String
     description: String
     address: String

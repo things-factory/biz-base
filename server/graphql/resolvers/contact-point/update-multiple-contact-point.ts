@@ -13,9 +13,8 @@ export const updateMultipleContactPoint = {
       for (let i = 0; i < _createRecords.length; i++) {
         const newRecord = _createRecords[i]
 
-        if (newRecord.bizplaceId) {
-          newRecord.bizplace = await bizplaceRepo.findOne(newRecord.bizplaceId)
-          delete newRecord.bizplaceId
+        if (newRecord.bizplace && newRecord.bizplace.id) {
+          newRecord.bizplace = await bizplaceRepo.findOne(newRecord.bizplace.id)
         }
 
         const result = await contactPointRepo.save({
@@ -34,9 +33,8 @@ export const updateMultipleContactPoint = {
         const newRecord = _updateRecords[i]
         const contactPoint = await contactPointRepo.findOne({ id: newRecord.id })
 
-        if (newRecord.bizplaceId) {
-          newRecord.bizplace = await bizplaceRepo.findOne(newRecord.bizplaceId)
-          delete newRecord.bizplaceId
+        if (newRecord.bizplace && newRecord.bizplace.id) {
+          newRecord.bizplace = await bizplaceRepo.findOne(newRecord.bizplace.id)
         }
 
         const result = await contactPointRepo.save({
