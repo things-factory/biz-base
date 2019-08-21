@@ -7,7 +7,6 @@ export const companiesResolver = {
     const queryBuilder = getRepository(Company).createQueryBuilder()
     buildQuery(queryBuilder, params)
     const [items, total] = await queryBuilder
-      .leftJoinAndSelect('Company.bizplaces', 'Bizplaces')
       .leftJoinAndSelect('Company.creator', 'Creator')
       .leftJoinAndSelect('Company.updater', 'Updater')
       .getManyAndCount()
