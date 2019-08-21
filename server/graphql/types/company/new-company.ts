@@ -7,7 +7,6 @@ export const NewCompany = gql`
     countryCode: String!
     brn: String!
     address: String!
-    bizplaces: [BizplacePatch]
     status: String!
   }
 `

@@ -24,7 +24,7 @@ export const Mutation = `
 
   deleteBizplaces (
     names: [String]!
-  ): Bizplace
+  ): [Bizplace]
 `
 
 export const Query = `

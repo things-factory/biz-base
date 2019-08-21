@@ -5,6 +5,6 @@ export const CustomerPatch = gql`
     id: String
     name: String
     description: String
-    bizplace: BizplacePatch
+    bizplaceId: String
   }
 `

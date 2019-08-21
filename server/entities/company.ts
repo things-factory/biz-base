@@ -1,15 +1,5 @@
 import { User } from '@things-factory/auth-base'
-import {
-  Column,
-  CreateDateColumn,
-  Entity,
-  Index,
-  ManyToOne,
-  OneToMany,
-  PrimaryGeneratedColumn,
-  UpdateDateColumn
-} from 'typeorm'
-import { Bizplace } from './bizplace'
+import { Column, CreateDateColumn, Entity, Index, ManyToOne, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm'
 
 @Entity('companies')
 @Index('ix_companies_0', (company: Company) => [company.name], { unique: true })
@@ -38,9 +28,6 @@ export class Company {
     nullable: true
   })
   type: string
-
-  @OneToMany(type => Bizplace, bizplace => bizplace.company)
-  bizplaces: Bizplace[]
 
   @Column({
     nullable: true

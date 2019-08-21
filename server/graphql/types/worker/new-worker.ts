@@ -2,7 +2,7 @@ import { gql } from 'apollo-server-koa'
 
 export const NewWorker = gql`
   input NewWorker {
-    bizplace: BizplacePatch!
+    bizplaceId: String!
     name: String!
     type: String!
     description: String

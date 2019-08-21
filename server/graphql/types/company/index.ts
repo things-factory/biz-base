@@ -14,9 +14,17 @@ export const Mutation = `
     patch: CompanyPatch!
   ): Company
 
+  updateMultipleCompany {
+    patches: [CompanyPatch]!
+  }: [Company]
+
   deleteCompany (
     name: String!
   ): Company
+
+  deleteCompanies (
+    names: [String]!
+  ): [Company]
 `
 
 export const Query = `

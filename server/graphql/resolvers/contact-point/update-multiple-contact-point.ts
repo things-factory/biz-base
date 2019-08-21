@@ -1,67 +1,51 @@
 import { getRepository } from 'typeorm'
-import { ContactPoint } from '../../../entities'
+import { ContactPoint, Bizplace } from '../../../entities'
 
 export const updateMultipleContactPoint = {
   async updateMultipleContactPoint(_: any, { patches }, context: any) {
     let results = []
-    let _createRecords = []
-    let _updateRecords = []
-
-    patches.forEach((patch: any) => {
-      if (patch.cuFlag.toUpperCase() === '+') {
-        delete patch.cuFlag
-        _createRecords.push(patch)
-      } else if (patch.cuFlag.toUpperCase() === 'M') {
-        delete patch.cuFlag
-        _updateRecords.push(patch)
-      }
-    })
-
-    const repository = getRepository(ContactPoint)
+    const _createRecords = patches.filter((patch: any) => patch.cuFlag === '+')
+    const _updateRecords = patches.filter((patch: any) => patch.cuFlag.toUpperCase() === 'M')
+    const contactPointRepo = getRepository(ContactPoint)
+    const bizplaceRepo = getRepository(Bizplace)
 
     if (_createRecords.length > 0) {
       for (let i = 0; i < _createRecords.length; i++) {
-        const contactPoint = _createRecords[i]
-        const result = await repository.save({
+        const newRecord = _createRecords[i]
+
+        if (newRecord.bizplaceId) {
+          newRecord.bizplace = await bizplaceRepo.findOne(newRecord.bizplaceId)
+          delete newRecord.bizplaceId
+        }
+
+        const result = await contactPointRepo.save({
           domain: context.domain,
           creator: context.state.user,
           updater: context.state.user,
-          ...contactPoint,
-          bizplace: { ...contactPoint.bizplace }
+          ...newRecord
         })
 
-        results = [
-          ...results,
-          {
-            ...result,
-            cuFlag: '+'
-          }
-        ]
+        results.push({ ...result, cuFlag: '+' })
       }
     }
 
     if (_updateRecords.length > 0) {
       for (let i = 0; i < _updateRecords.length; i++) {
-        const patch = _updateRecords[i]
+        const newRecord = _updateRecords[i]
+        const contactPoint = await contactPointRepo.findOne({ id: newRecord.id })
 
-        const contactPoint = await repository.findOne({ where: { id: patch.id }, relations: ['bizplace', 'updater'] })
-        const result = await repository.save({
+        if (newRecord.bizplaceId) {
+          newRecord.bizplace = await bizplaceRepo.findOne(newRecord.bizplaceId)
+          delete newRecord.bizplaceId
+        }
+
+        const result = await contactPointRepo.save({
           ...contactPoint,
-          ...patch,
-          updater: context.state.user,
-          bizplace: {
-            ...contactPoint.bizplace,
-            ...patch.bizplace
-          }
+          ...newRecord,
+          updater: context.state.user
         })
 
-        results = [
-          ...results,
-          {
-            ...result,
-            cuFlag: 'M'
-          }
-        ]
+        results.push({ ...result, cuFlag: 'M' })
       }
     }
 

@@ -22,11 +22,8 @@ export class Bizplace {
   @ManyToOne(type => Domain)
   domain: Domain
 
-  @ManyToOne(type => Company, company => company.bizplaces)
+  @ManyToOne(type => Company)
   company: Company
-
-  @OneToMany(type => ContactPoint, contactPoint => contactPoint.bizplace)
-  contactPoints: ContactPoint[]
 
   @Column()
   name: string

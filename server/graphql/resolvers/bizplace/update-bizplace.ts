@@ -1,22 +1,19 @@
 import { getRepository } from 'typeorm'
-import { Bizplace } from '../../../entities'
+import { Bizplace, Company } from '../../../entities'
 
 export const updateBizplace = {
   async updateBizplace(_: any, { name, patch }, context: any) {
-    const repository = getRepository(Bizplace)
-    const bizplace = await repository.findOne({
-      where: { domain: context.domain, name },
-      relations: ['company', 'updater']
-    })
+    const bizplace = await getRepository(Bizplace).findOne({ domain: context.domain, name })
 
-    return await repository.save({
+    if (patch.companyId) {
+      patch.company = await getRepository(Company).findOne(patch.companyId)
+      delete patch.companyId
+    }
+
+    return await getRepository(Bizplace).save({
       ...bizplace,
       ...patch,
-      updater: context.state.user,
-      company: {
-        ...bizplace.company,
-        ...patch.company
-      }
+      updater: context.state.user
     })
   }
 }
