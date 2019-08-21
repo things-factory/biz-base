@@ -23,7 +23,7 @@ export const Mutation = `
 
   deleteBizplaces (
     names: [String]!
-  ): [Bizplace]
+  ): Boolean
 `
 
 export const Query = `

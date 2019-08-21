@@ -23,7 +23,7 @@ export const Mutation = `
 
   deleteCompanies (
     names: [String]!
-  ): [Company]
+  ): Boolean
 `
 
 export const Query = `

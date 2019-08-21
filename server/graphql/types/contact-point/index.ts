@@ -23,7 +23,7 @@ export const Mutation = `
 
   deleteContactPoints (
     names: [String]!
-  ): [ContactPoint]
+  ): Boolean
 `
 
 export const Query = `
