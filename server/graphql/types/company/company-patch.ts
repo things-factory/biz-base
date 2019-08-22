@@ -8,6 +8,7 @@ export const CompanyPatch = gql`
     countryCode: String
     brn: String
     address: String
+    postalCode: String
     status: String
   }
 `

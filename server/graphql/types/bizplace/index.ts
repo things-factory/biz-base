@@ -19,7 +19,7 @@ export const Mutation = `
 
   deleteBizplace (
     name: String!
-  ): Bizplace
+  ): Boolean
 
   deleteBizplaces (
     names: [String]!

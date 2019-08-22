@@ -6,6 +6,7 @@ export const Company = gql`
     name: String
     description: String
     countryCode: String
+    postalCode: String
     brn: String
     address: String
     bizplaces: [Bizplace]

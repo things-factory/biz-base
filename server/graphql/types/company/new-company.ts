@@ -7,6 +7,8 @@ export const NewCompany = gql`
     countryCode: String!
     brn: String!
     address: String!
+    postalCode: String
+    type: String
     status: String!
   }
 `

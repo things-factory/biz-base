@@ -27,6 +27,11 @@ export class Company {
   @Column({
     nullable: true
   })
+  postalCode: string
+
+  @Column({
+    nullable: true
+  })
   type: string
 
   @Column({
