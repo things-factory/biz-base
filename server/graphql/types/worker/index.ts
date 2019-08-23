@@ -13,14 +13,22 @@ export const Mutation = `
     patch: WorkerPatch!
   ): Worker
 
+  updateMultipleWorker (
+    patches: [WorkerPatch]!
+  ): [Worker]
+
   deleteWorker (
     name: String!
-  ): Worker
+  ): Boolean
+
+  deleteWorkers (
+    names: [String]!
+  ): Boolean
 `
 
 export const Query = `
   workers(filters: [Filter], pagination: Pagination, sortings: [Sorting]): WorkerList
-  worker(id: String!): Worker
+  worker(name: String!): Worker
 `
 
 export const Types = [Worker, NewWorker, WorkerPatch, WorkerList]
