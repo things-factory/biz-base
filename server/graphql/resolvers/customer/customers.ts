@@ -8,7 +8,6 @@ export const customersResolver = {
     buildQuery(queryBuilder, params, context)
     const [items, total] = await queryBuilder
       .leftJoinAndSelect('Customer.domain', 'Domain')
-      .leftJoinAndSelect('Customer.partner', 'Partner')
       .leftJoinAndSelect('Customer.bizplace', 'Bizplace')
       .leftJoinAndSelect('Customer.creator', 'Creator')
       .leftJoinAndSelect('Customer.updater', 'Updater')

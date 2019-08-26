@@ -1,40 +1,19 @@
 import { User } from '@things-factory/auth-base'
-import { Domain } from '@things-factory/shell'
-import {
-  Column,
-  CreateDateColumn,
-  Entity,
-  Index,
-  ManyToOne,
-  OneToMany,
-  PrimaryGeneratedColumn,
-  UpdateDateColumn
-} from 'typeorm'
+import { CreateDateColumn, Entity, Index, ManyToOne, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm'
 import { Customer } from './customer'
 import { Vendor } from './vendor'
 
 @Entity('partners')
-@Index('ix_partner_0', (partner: Partner) => [partner.domain, partner.name], { unique: true })
+@Index('ix_partner_0', (partner: Partner) => [partner.customer, partner.vendor], { unique: true })
 export class Partner {
   @PrimaryGeneratedColumn('uuid')
-  id: string
+  id: String
 
-  @ManyToOne(type => Domain)
-  domain: Domain
+  @ManyToOne(type => Vendor)
+  vendor: Vendor
 
-  @Column()
-  name: string
-
-  @OneToMany(type => Vendor, vendor => vendor.partner)
-  vendors: Vendor
-
-  @OneToMany(type => Customer, customer => customer.partner)
-  customers: Customer
-
-  @Column({
-    nullable: true
-  })
-  description: string
+  @ManyToOne(type => Customer)
+  customer: Customer
 
   @CreateDateColumn()
   createdAt: Date

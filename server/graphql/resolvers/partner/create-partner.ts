@@ -1,13 +1,11 @@
 import { getRepository } from 'typeorm'
-import { Partner } from '../../../entities'
+import { Customer, Partner, Vendor } from '../../../entities'
 
 export const createPartner = {
-  async createPartner(_: any, { partner }, context: any) {
-    return await getRepository(Partner).save({
-      domain: context.domain,
-      creator: context.state.user,
-      updater: context.state.user,
-      ...partner
+  async createPartner(_: any, { customer, vendor }) {
+    return await getRepository(Partner).create({
+      vendor: await getRepository(Vendor).findOne(vendor.id),
+      customer: await getRepository(Customer).findOne(customer.id)
     })
   }
 }

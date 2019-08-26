@@ -1,17 +1,13 @@
-import { partnerResolver } from './partner'
-import { partnersResolver } from './partners'
-
-import { updatePartner } from './update-partner'
 import { createPartner } from './create-partner'
 import { deletePartner } from './delete-partner'
+import { partnerCustomers } from './partner-customers'
+import { partnerCustomer } from './partner-customer'
+import { partnerVendors } from './partner-vendors'
+import { partnerVendor } from './partner-vendor'
 
-export const Query = {
-  ...partnersResolver,
-  ...partnerResolver
-}
+export const Query = { partnerCustomers, partnerCustomer, partnerVendors, partnerVendor }
 
 export const Mutation = {
-  ...updatePartner,
   ...createPartner,
   ...deletePartner
 }

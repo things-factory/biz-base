@@ -1,26 +1,22 @@
 import { Partner } from './partner'
-import { NewPartner } from './new-partner'
-import { PartnerPatch } from './partner-patch'
 import { PartnerList } from './partner-list'
 
 export const Mutation = `
   createPartner (
-    partner: NewPartner!
-  ): Partner
-
-  updatePartner (
-    name: String!
-    patch: PartnerPatch!
+    customer: ObjectRef!
+    vendor: ObjectRef!
   ): Partner
 
   deletePartner (
-    name: String!
+    id: String!
   ): Boolean
 `
 
 export const Query = `
-  partners(filters: [Filter], pagination: Pagination, sortings: [Sorting]): PartnerList
-  partner(id: String!): Partner
+  partnerCustomers(vendor: ObjectRef!, filters: [Filter], pagination: Pagination, sortings: [Sorting]): PartnerList
+  partnerCustomer(vendor: ObjectRef!, customer: ObjectRef!): Partner
+  partnerVendors(customer: ObjectRef!, filters: [Filter], pagination: Pagination, sortings: [Sorting]): PartnerList
+  partnerVendor(customer: ObjectRef!, vendor: ObjectRef!): Partner
 `
 
-export const Types = [Partner, NewPartner, PartnerPatch, PartnerList]
+export const Types = [Partner, PartnerList]
