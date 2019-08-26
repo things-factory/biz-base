@@ -2,6 +2,7 @@ import { User } from '@things-factory/auth-base'
 import { Domain } from '@things-factory/shell'
 import { Column, CreateDateColumn, Entity, Index, ManyToOne, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm'
 import { Bizplace } from './bizplace'
+import { Partner } from './partner'
 
 @Entity('vendors')
 @Index('ix_vendors_0', (vendor: Vendor) => [vendor.name], { unique: true })
@@ -11,6 +12,9 @@ export class Vendor {
 
   @ManyToOne(type => Domain)
   domain: Domain
+
+  @ManyToOne(type => Partner, partner => partner.vendors)
+  partner: Partner
 
   @Column()
   name: string

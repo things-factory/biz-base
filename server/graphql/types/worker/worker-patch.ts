@@ -7,5 +7,6 @@ export const WorkerPatch = gql`
     name: String
     type: String
     description: String
+    cuFlag: String
   }
 `

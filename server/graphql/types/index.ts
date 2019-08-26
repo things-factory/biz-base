@@ -1,12 +1,21 @@
+import { Filter, ObjectRef, Pagination, Sorting } from '@things-factory/shell'
 import * as Bizplace from './bizplace'
 import * as Company from './company'
 import * as ContactPoint from './contact-point'
 import * as Customer from './customer'
+import * as Partner from './partner'
 import * as Vendor from './vendor'
 import * as Worker from './worker'
-import { Filter, Pagination, Sorting, ObjectRef } from '@things-factory/shell'
 
-export const queries = [Bizplace.Query, Company.Query, ContactPoint.Query, Customer.Query, Vendor.Query, Worker.Query]
+export const queries = [
+  Bizplace.Query,
+  Company.Query,
+  ContactPoint.Query,
+  Customer.Query,
+  Vendor.Query,
+  Worker.Query,
+  Partner.Query
+]
 
 export const mutations = [
   Bizplace.Mutation,
@@ -14,7 +23,8 @@ export const mutations = [
   ContactPoint.Mutation,
   Customer.Mutation,
   Vendor.Mutation,
-  Worker.Mutation
+  Worker.Mutation,
+  Partner.Mutation
 ]
 
 export const types = [
@@ -27,5 +37,6 @@ export const types = [
   ...ContactPoint.Types,
   ...Customer.Types,
   ...Vendor.Types,
-  ...Worker.Types
+  ...Worker.Types,
+  ...Partner.Types
 ]

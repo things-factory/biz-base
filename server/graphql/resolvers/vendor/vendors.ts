@@ -10,6 +10,7 @@ export const vendorsResolver = {
     const [items, total] = await queryBuilder
       .leftJoinAndSelect('Vendor.domain', 'Domain')
       .leftJoinAndSelect('Vendor.bizplace', 'Bizplace')
+      .leftJoinAndSelect('Vendor.partner', 'Partner')
       .leftJoinAndSelect('Vendor.creator', 'Creator')
       .leftJoinAndSelect('Vendor.updater', 'Updater')
       .getManyAndCount()
