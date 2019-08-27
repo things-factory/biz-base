@@ -4,7 +4,7 @@ import { Column, CreateDateColumn, Entity, Index, ManyToOne, PrimaryGeneratedCol
 import { Bizplace } from './bizplace'
 
 @Entity('customers')
-@Index('ix_customers_0', (customer: Customer) => [customer.name], { unique: true })
+@Index('ix_customers_0', (customer: Customer) => [customer.name, customer.id], { unique: true })
 export class Customer {
   @PrimaryGeneratedColumn('uuid')
   id: string

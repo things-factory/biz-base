@@ -25,12 +25,32 @@ const SEEDS_PRIVILEDGE = [
   },
   {
     name: 'query',
-    category: 'contact point',
+    category: 'contact_point',
     description: 'to read contact point data'
   },
   {
     name: 'mutation',
-    category: 'contact point',
+    category: 'contact_point',
+    description: 'to edit contact point data'
+  },
+  {
+    name: 'query',
+    category: 'customer',
+    description: 'to read contact point data'
+  },
+  {
+    name: 'mutation',
+    category: 'customer',
+    description: 'to edit contact point data'
+  },
+  {
+    name: 'query',
+    category: 'vendor',
+    description: 'to read contact point data'
+  },
+  {
+    name: 'mutation',
+    category: 'vendor',
     description: 'to edit contact point data'
   },
   {
