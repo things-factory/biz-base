@@ -6,29 +6,29 @@ import { NewBizplace } from './new-bizplace'
 export const Mutation = `
   createBizplace (
     bizplace: NewBizplace!
-  ): Bizplace
+  ): Bizplace @priviledge(priviledge: "mutation")
 
   updateBizplace (
     name: String!
     patch: BizplacePatch!
-  ): Bizplace
+  ): Bizplace @priviledge(priviledge: "mutation")
 
   updateMultipleBizplace (
     patches: [BizplacePatch]!
-  ): [Bizplace]
+  ): [Bizplace] @priviledge(priviledge: "mutation")
 
   deleteBizplace (
     name: String!
-  ): Boolean
+  ): Boolean @priviledge(priviledge: "mutation")
 
   deleteBizplaces (
     names: [String]!
-  ): Boolean
+  ): Boolean @priviledge(priviledge: "mutation")
 `
 
 export const Query = `
-  bizplaces(filters: [Filter], pagination: Pagination, sortings: [Sorting]): BizplaceList
-  bizplace(name: String!): Bizplace
+  bizplaces(filters: [Filter], pagination: Pagination, sortings: [Sorting]): BizplaceList @priviledge(priviledge: "query")
+  bizplace(name: String!): Bizplace @priviledge(priviledge: "query")
 `
 
 export const Types = [Bizplace, NewBizplace, BizplacePatch, BizplaceList]

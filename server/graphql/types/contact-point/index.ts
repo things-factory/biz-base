@@ -6,29 +6,29 @@ import { NewContactPoint } from './new-contact-point'
 export const Mutation = `
   createContactPoint (
     contactPoint: NewContactPoint!
-  ): ContactPoint
+  ): ContactPoint @priviledge(priviledge: "mutation")
 
   updateContactPoint (
     name: String!
     patch: ContactPointPatch!
-  ): [ContactPoint]
+  ): [ContactPoint] @priviledge(priviledge: "mutation")
 
   updateMultipleContactPoint (
     patches: [ContactPointPatch]!
-  ): [ContactPoint]
+  ): [ContactPoint] @priviledge(priviledge: "mutation")
 
   deleteContactPoint (
     name: String!
-  ): ContactPoint
+  ): ContactPoint @priviledge(priviledge: "mutation")
 
   deleteContactPoints (
     names: [String]!
-  ): Boolean
+  ): Boolean @priviledge(priviledge: "mutation")
 `
 
 export const Query = `
-  contactPoints(filters: [Filter], pagination: Pagination, sortings: [Sorting]): ContactPointList
-  contactPoint(name: String!): ContactPoint
+  contactPoints(filters: [Filter], pagination: Pagination, sortings: [Sorting]): ContactPointList @priviledge(priviledge: "query")
+  contactPoint(name: String!): ContactPoint @priviledge(priviledge: "query")
 `
 
 export const Types = [ContactPoint, NewContactPoint, ContactPointPatch, ContactPointList]

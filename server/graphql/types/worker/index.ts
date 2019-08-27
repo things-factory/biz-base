@@ -6,29 +6,29 @@ import { WorkerList } from './worker-list'
 export const Mutation = `
   createWorker (
     worker: NewWorker!
-  ): Worker
+  ): Worker @priviledge(priviledge: "mutation")
 
   updateWorker (
     name: String!
     patch: WorkerPatch!
-  ): Worker
+  ): Worker @priviledge(priviledge: "mutation")
 
   updateMultipleWorker (
     patches: [WorkerPatch]!
-  ): [Worker]
+  ): [Worker] @priviledge(priviledge: "mutation")
 
   deleteWorker (
     name: String!
-  ): Boolean
+  ): Boolean @priviledge(priviledge: "mutation")
 
   deleteWorkers (
     names: [String]!
-  ): Boolean
+  ): Boolean @priviledge(priviledge: "mutation")
 `
 
 export const Query = `
-  workers(filters: [Filter], pagination: Pagination, sortings: [Sorting]): WorkerList
-  worker(name: String!): Worker
+  workers(filters: [Filter], pagination: Pagination, sortings: [Sorting]): WorkerList @priviledge(priviledge: "query")
+  worker(name: String!): Worker @priviledge(priviledge: "query")
 `
 
 export const Types = [Worker, NewWorker, WorkerPatch, WorkerList]

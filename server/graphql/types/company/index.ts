@@ -6,29 +6,29 @@ import { NewCompany } from './new-company'
 export const Mutation = `
   createCompany (
     company: NewCompany!
-  ): Company
+  ): Company @priviledge(priviledge: "mutation")
 
   updateCompany (
     name: String!
     patch: CompanyPatch!
-  ): Company
+  ): Company @priviledge(priviledge: "mutation")
 
   updateMultipleCompany (
     patches: [CompanyPatch]!
-  ): [Company]
+  ): [Company] @priviledge(priviledge: "mutation")
 
   deleteCompany (
     name: String!
-  ): Company
+  ): Company @priviledge(priviledge: "mutation")
 
   deleteCompanies (
     names: [String]!
-  ): Boolean
+  ): Boolean @priviledge(priviledge: "mutation")
 `
 
 export const Query = `
-  companies(filters: [Filter], pagination: Pagination, sortings: [Sorting]): CompanyList
-  company(name: String!): Company
+  companies(filters: [Filter], pagination: Pagination, sortings: [Sorting]): CompanyList @priviledge(priviledge: "query")
+  company(name: String!): Company @priviledge(priviledge: "query")
 `
 
 export const Types = [Company, NewCompany, CompanyPatch, CompanyList]
