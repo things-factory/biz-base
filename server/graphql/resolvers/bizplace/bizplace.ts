@@ -5,7 +5,7 @@ export const bizplaceResolver = {
   async bizplace(_: any, { name }) {
     return await getRepository(Bizplace).findOne({
       where: { name },
-      relations: ['company', 'users', 'creator', 'updater']
+      relations: ['company', 'domain', 'users', 'creator', 'updater']
     })
   }
 }
