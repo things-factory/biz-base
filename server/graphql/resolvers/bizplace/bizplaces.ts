@@ -9,6 +9,7 @@ export const bizplacesResolver = {
     const [items, total] = await queryBuilder
       .leftJoinAndSelect('Bizplace.domain', 'Domain')
       .leftJoinAndSelect('Bizplace.company', 'Company')
+      .leftJoinAndSelect('Bizplace.users', 'Users')
       .leftJoinAndSelect('Bizplace.creator', 'Creator')
       .leftJoinAndSelect('Bizplace.updater', 'Updater')
       .getManyAndCount()

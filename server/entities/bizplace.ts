@@ -1,6 +1,16 @@
 import { User } from '@things-factory/auth-base'
 import { Domain } from '@things-factory/shell'
-import { Column, CreateDateColumn, Entity, Index, ManyToOne, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm'
+import {
+  Column,
+  CreateDateColumn,
+  Entity,
+  Index,
+  ManyToOne,
+  PrimaryGeneratedColumn,
+  UpdateDateColumn,
+  ManyToMany,
+  JoinTable
+} from 'typeorm'
 import { Company } from './company'
 
 @Entity('bizplaces')
@@ -11,6 +21,10 @@ export class Bizplace {
 
   @ManyToOne(type => Domain)
   domain: Domain
+
+  @ManyToMany(type => User)
+  @JoinTable({ name: 'bizplaces_users' })
+  users: User[]
 
   @ManyToOne(type => Company)
   company: Company

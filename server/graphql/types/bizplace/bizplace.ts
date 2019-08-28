@@ -4,6 +4,7 @@ export const Bizplace = gql`
   type Bizplace {
     id: String
     domain: Domain
+    users: [User]
     contactPoints: [ContactPoint]
     company: Company
     name: String
