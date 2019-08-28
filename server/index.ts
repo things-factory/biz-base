@@ -9,8 +9,7 @@ process.on('bootstrap-module-register-context' as any, function(app: any, contex
   contextList.push(async function({ ctx }) {
     if (ctx && ctx.state && ctx.state.user && ctx.state.user.id) {
       const userId = ctx.state.user.id
-
-      ctx.bizplaces = await getRepository(Bizplace).query(
+      const bizplaces = await getRepository(Bizplace).query(
         `
         SELECT
           id,
@@ -31,8 +30,10 @@ process.on('bootstrap-module-register-context' as any, function(app: any, contex
       `,
         [userId]
       )
-    }
 
-    return ctx
+      return {
+        bizplaces
+      }
+    }
   })
 })
