@@ -10,7 +10,7 @@ process.on('bootstrap-module-register-context' as any, function(app: any, contex
     if (ctx && ctx.state && ctx.state.user && ctx.state.user.id) {
       const userId = ctx.state.user.id
 
-      ctx.bizplace = await getRepository(Bizplace).query(
+      ctx.bizplaces = await getRepository(Bizplace).query(
         `
         SELECT
           id,
