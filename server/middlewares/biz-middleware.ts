@@ -1,7 +1,7 @@
-import { Bizplace } from 'server/entities'
+import { Bizplace } from '../entities'
 import { getRepository } from 'typeorm'
 
-export async function bizMiddleware(context, next) {
+export async function bizMiddleware(context: any, next: any) {
   try {
     if (context && context.state && context.state.user && context.state.user.id) {
       const userId = context.state.user.id
@@ -26,6 +26,8 @@ export async function bizMiddleware(context, next) {
       `,
         [userId]
       )
+
+      return next()
     }
   } catch (e) {
     console.error(e)
