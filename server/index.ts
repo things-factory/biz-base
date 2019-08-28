@@ -27,7 +27,7 @@ process.on('bootstrap-module-register-context' as any, function(app: any, contex
             bizplaces_users
           WHERE
             users_id = :userId
-        ) LIMIT 1
+        )
       `,
         [userId]
       )
