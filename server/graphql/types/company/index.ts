@@ -2,7 +2,6 @@ import { Company } from './company'
 import { CompanyList } from './company-list'
 import { CompanyPatch } from './company-patch'
 import { NewCompany } from './new-company'
-import { directivePriviledge } from '@things-factory/auth-base'
 
 export const Mutation = `
   createCompany (

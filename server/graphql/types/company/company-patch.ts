@@ -10,5 +10,6 @@ export const CompanyPatch = gql`
     address: String
     postalCode: String
     status: String
+    cuFlag: String
   }
 `
