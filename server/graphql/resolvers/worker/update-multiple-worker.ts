@@ -1,5 +1,6 @@
 import { getRepository } from 'typeorm'
 import { Worker, Bizplace } from '../../../entities'
+import { getUserBizplaces } from '../../../index'
 
 export const updateMultipleWorker = {
   async updateMultipleWorker(_: any, { patches }, context: any) {
@@ -15,6 +16,9 @@ export const updateMultipleWorker = {
 
         if (newRecord.bizplace && newRecord.bizplace.id) {
           newRecord.bizplace = await bizplaceRepo.findOne(newRecord.bizplace.id)
+        } else {
+          const userBizplaces = await getUserBizplaces(context)
+          newRecord.bizplace = userBizplaces[0]
         }
 
         const result = await workerRepo.save({
