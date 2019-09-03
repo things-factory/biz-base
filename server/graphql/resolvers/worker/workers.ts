@@ -1,13 +1,11 @@
 import { convertListParams, ListParam } from '@things-factory/shell'
 import { getRepository, In } from 'typeorm'
-import { Worker } from '../../../entities'
-import { getUserBizplaces } from '../../../index'
+import { Bizplace, Worker } from '../../../entities'
 
 export const workersResolver = {
   async workers(_: any, params: ListParam, context: any) {
     const convertedParams = convertListParams(params)
-    const userBizplaces = await getUserBizplaces(context)
-    convertedParams.where.bizplace = In(userBizplaces.map(userBizplace => userBizplace.id))
+    convertedParams.where.bizplace = In(context.state.bizplaces.map((bizplace: Bizplace) => bizplace.id))
     const [items, total] = await getRepository(Worker).findAndCount({
       ...convertedParams,
       relations: ['domain', 'bizplace', 'creator', 'updater']
