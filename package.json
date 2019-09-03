@@ -1,6 +1,6 @@
 {
   "name": "@things-factory/biz-base",
-  "version": "0.1.50",
+  "version": "0.1.51",
   "main": "dist-server/index.js",
   "browser": "client/index.js",
   "things-factory": true,
@@ -27,5 +27,8 @@
     "@things-factory/menu-base": "*",
     "@things-factory/shell": "*"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "@things-factory/opa-app": "*",
+    "@things-factory/opa-test": "*"
+  }
 }
