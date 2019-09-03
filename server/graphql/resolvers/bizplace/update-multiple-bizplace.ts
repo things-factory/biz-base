@@ -18,7 +18,7 @@ export const updateMultipleBizplace = {
         }
 
         const result = await bizplaceRepo.save({
-          domain: context.domain,
+          domain: context.state.domain,
           creator: context.state.user,
           updater: context.state.user,
           ...newRecord

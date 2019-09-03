@@ -3,7 +3,7 @@ import { Vendor, Bizplace } from '../../../entities'
 
 export const updateVendor = {
   async updateVendor(_: any, { name, patch }, context: any) {
-    const vendor = await getRepository(Vendor).findOne({ domain: context.domain, name })
+    const vendor = await getRepository(Vendor).findOne({ domain: context.state.domain, name })
     if (patch.bizplace && patch.bizplace.id) {
       patch.bizplace = await getRepository(Bizplace).findOne(patch.bizplace.id)
     }

@@ -5,7 +5,7 @@ import { Bizplace } from '../../../entities'
 export const bizplacesResolver = {
   async bizplaces(_: any, params: ListParam, context: any) {
     const queryBuilder = getRepository(Bizplace).createQueryBuilder()
-    buildQuery(queryBuilder, params, context, context && context.domain && !context.domain.systemFlag)
+    buildQuery(queryBuilder, params, context)
     const [items, total] = await queryBuilder
       .leftJoinAndSelect('Bizplace.domain', 'Domain')
       .leftJoinAndSelect('Bizplace.company', 'Company')

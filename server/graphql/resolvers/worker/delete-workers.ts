@@ -4,7 +4,7 @@ import { Worker } from '../../../entities'
 export const deleteWorkers = {
   async deleteWorkers(_: any, { names }, context: any) {
     await getRepository(Worker).delete({
-      domain: context.domain,
+      domain: context.state.domain,
       name: In(names)
     })
 

@@ -4,7 +4,7 @@ import { ContactPoint } from '../../../entities'
 export const deleteContactPoints = {
   async deleteContactPoints(_: any, { names }, context: any) {
     await getRepository(ContactPoint).delete({
-      domain: context.domain,
+      domain: context.state.domain,
       name: In(names)
     })
 

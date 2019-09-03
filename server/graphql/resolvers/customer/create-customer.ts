@@ -9,7 +9,7 @@ export const createCustomer = {
 
     return await getRepository(Customer).save({
       ...customer,
-      domain: context.domain,
+      domain: context.state.domain,
       creator: context.state.user,
       updater: context.state.user
     })

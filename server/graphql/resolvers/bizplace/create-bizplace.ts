@@ -9,7 +9,7 @@ export const createBizplace = {
 
     return await getRepository(Bizplace).save({
       ...bizplace,
-      domain: context.domain,
+      domain: context.state.domain,
       creator: context.state.user,
       updater: context.state.user
     })

@@ -3,7 +3,7 @@ import { Worker, Bizplace } from '../../../entities'
 
 export const updateWorker = {
   async updateWorker(_: any, { name, patch }, context: any) {
-    const worker = await getRepository(Worker).findOne({ domain: context.domain, name })
+    const worker = await getRepository(Worker).findOne({ domain: context.state.domain, name })
 
     if (patch.bizplace && patch.bizplace.id) {
       worker.bizplace = await getRepository(Bizplace).findOne(patch.bizplace.id)

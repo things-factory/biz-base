@@ -13,7 +13,7 @@ export const updateMultipleCompany = {
         const newRecord = _createRecords[i]
 
         const result = await companyRepo.save({
-          domain: context.domain,
+          domain: context.state.domain,
           creator: context.state.user,
           updater: context.state.user,
           ...newRecord

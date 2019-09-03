@@ -4,7 +4,7 @@ import { Vendor } from '../../../entities'
 export const deleteVendors = {
   async deleteVendors(_: any, { names }, context: any) {
     await getRepository(Vendor).delete({
-      domain: context.domain,
+      domain: context.state.domain,
       name: In(names)
     })
 
