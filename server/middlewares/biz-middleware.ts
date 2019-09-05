@@ -20,10 +20,9 @@ export async function bizMiddleware(context: any, next: any) {
           FROM
             bizplaces_users
           WHERE
-            users_id = :userId
+            users_id = '${userId}'
         )
-      `,
-      [userId]
+      `
     )
   }
 
