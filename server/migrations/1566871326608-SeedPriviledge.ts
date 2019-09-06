@@ -62,6 +62,16 @@ const SEEDS_PRIVILEDGES = [
     name: 'mutation',
     category: 'worker',
     description: 'to edit worker data'
+  },
+  {
+    name: 'query',
+    category: 'owner',
+    description: 'to read owner side data'
+  },
+  {
+    name: 'query',
+    category: 'customer',
+    description: 'to read customer side data'
   }
 ]
 
