@@ -64,12 +64,12 @@ const SEEDS_PRIVILEDGES = [
     description: 'to edit worker data'
   },
   {
-    name: 'query',
+    name: 'role',
     category: 'owner',
     description: 'to read owner side data'
   },
   {
-    name: 'query',
+    name: 'role',
     category: 'customer',
     description: 'to read customer side data'
   }
