@@ -25,6 +25,11 @@ export const Mutation = `
   deleteBizplaces (
     names: [String]!
   ): Boolean @priviledge(category: "bizplace", priviledge: "mutation")
+
+  updateUserBizplaces (
+    email: String!
+    bizplaces: [ObjectRef]!
+  ): [UserBizplace] @priviledge(category: "bizplace", priviledge: "mutation")
 `
 
 export const Query = `
