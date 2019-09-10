@@ -1,5 +1,6 @@
 import { bizplaceResolver } from './bizplace'
 import { bizplacesResolver } from './bizplaces'
+import { userBizplacesResolver } from './user-bizplaces'
 
 import { updateBizplace } from './update-bizplace'
 import { updateMultipleBizplace } from './update-multiple-bizplace'
@@ -9,7 +10,8 @@ import { deleteBizplaces } from './delete-bizplaces'
 
 export const Query = {
   ...bizplaceResolver,
-  ...bizplacesResolver
+  ...bizplacesResolver,
+  ...userBizplacesResolver
 }
 
 export const Mutation = {
