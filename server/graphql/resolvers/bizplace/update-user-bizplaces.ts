@@ -1,18 +1,34 @@
+import { User } from '@things-factory/auth-base'
 import { getRepository } from 'typeorm'
 import { Bizplace } from '../../../entities'
-import { User } from '@things-factory/auth-base'
 
 export const updateUserBizplaces = {
   async updateUserBizplaces(_: any, { email, bizplaces }, context: any) {
-    const repository = getRepository(User)
-    const user: User = repository.findOne({ where: { domain: context.state.domain, email } })
+    const user: User = await getRepository(User).findOne({ where: { domain: context.state.domain, email } })
+    await getRepository(User).save({
+      ...user,
+      bizplaces: await getRepository(Bizplace).findByIds(bizplaces.map((bizplace: Bizplace) => bizplace.id))
+    })
 
-    user.bizplaces = await Promise.all(
-      bizplaces.map(async (bizplace: Bizplace) => {
-        await getRepository(Bizplace).findOne(bizplace.id)
-      })
-    )
-
-    repository.save(user)
+    return await getRepository(Bizplace).query(`
+      SELECT
+        id,
+        name,
+        description,
+        CASE WHEN id IN (
+          SELECT
+            B.id
+          FROM
+            bizplaces B JOIN bizplaces_users BU
+          ON
+            B.id = BU.bizplaces_id
+          WHERE
+            BU.users_id = '${user.id}'
+        ) THEN true
+          ELSE false
+        END AS assigned
+      FROM
+        bizplaces
+      `)
   }
 }
