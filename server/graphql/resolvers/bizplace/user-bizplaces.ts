@@ -17,14 +17,17 @@ export const userBizplacesResolver = {
             FROM
               bizplaces B JOIN bizplaces_users BU
             ON
-              B.id = BU.bizplaces_id
+              B.id = BU.bizplace_id
             WHERE
-              BU.users_id = '${user.id}'
+              BU.user_id = '${user.id}'
           ) THEN true
             ELSE false
-          END AS assigned
+          END AS assigned,
+          BU.my_bizplace
         FROM
-          bizplaces
+          bizplaces B LEFT JOIN bizplaces_users BU
+        ON
+          B.id = BU.bizplace_id
       `
     )
 

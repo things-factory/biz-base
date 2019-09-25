@@ -16,11 +16,11 @@ export async function bizMiddleware(context: any, next: any) {
           id
         IN (
           SELECT
-            bizplaces_id
+            bizplace_id
           FROM
             bizplaces_users
           WHERE
-            users_id = '${userId}'
+            user_id = '${userId}'
         )
       `
     )

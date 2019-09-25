@@ -6,11 +6,11 @@ import {
   Entity,
   Index,
   ManyToOne,
+  OneToMany,
   PrimaryGeneratedColumn,
-  UpdateDateColumn,
-  ManyToMany,
-  JoinTable
+  UpdateDateColumn
 } from 'typeorm'
+import { BizplaceUser } from './bizplace-user'
 import { Company } from './company'
 
 @Entity('bizplaces')
@@ -22,9 +22,8 @@ export class Bizplace {
   @ManyToOne(type => Domain)
   domain: Domain
 
-  @ManyToMany(type => User)
-  @JoinTable({ name: 'bizplaces_users' })
-  users: User[]
+  @OneToMany(type => BizplaceUser, bizplaceUser => bizplaceUser.bizplace)
+  users: []
 
   @ManyToOne(type => Company)
   company: Company

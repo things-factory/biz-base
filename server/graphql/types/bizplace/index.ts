@@ -1,6 +1,7 @@
 import { Bizplace } from './bizplace'
 import { BizplaceList } from './bizplace-list'
 import { BizplacePatch } from './bizplace-patch'
+import { BizplaceUsersPatch } from './bizplace-users-patch'
 import { NewBizplace } from './new-bizplace'
 import { UserBizplace } from './user-bizplace'
 
@@ -28,7 +29,7 @@ export const Mutation = `
 
   updateUserBizplaces (
     email: String!
-    bizplaces: [ObjectRef]!
+    bizplaceUsers: [BizplaceUsersPatch]!
   ): [UserBizplace] @priviledge(category: "bizplace", priviledge: "mutation")
 `
 
@@ -38,4 +39,4 @@ export const Query = `
   bizplace(name: String!): Bizplace @priviledge(category: "bizplace", priviledge: "query")
 `
 
-export const Types = [Bizplace, NewBizplace, BizplacePatch, BizplaceList, UserBizplace]
+export const Types = [Bizplace, NewBizplace, BizplacePatch, BizplaceUsersPatch, BizplaceList, UserBizplace]

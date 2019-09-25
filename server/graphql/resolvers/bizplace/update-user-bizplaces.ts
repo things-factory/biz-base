@@ -1,56 +1,54 @@
 import { User } from '@things-factory/auth-base'
-import { Bizplace } from '../../../entities'
 import { getManager, getRepository } from 'typeorm'
+import { Bizplace, BizplaceUser } from '../../../entities'
 
 export const updateUserBizplaces = {
-  async updateUserBizplaces(_: any, { email, bizplaces }, context: any) {
-    return await getManager().transaction(async transactionalEntityManager => {
+  async updateUserBizplaces(_: any, { email, bizplaceUsers }, context: any) {
+    return await getManager().transaction(async () => {
       try {
         const targetUser: User = await getRepository(User).findOne({ where: { domain: context.state.domain, email } })
         if (!targetUser) throw new Error('user not exists')
 
         // 1. Delete every bizplaces related with current user.
-        transactionalEntityManager.query(`
+        await getRepository(BizplaceUser).query(`
           DELETE FROM
             bizplaces_users
           WHERE
-            users_id = '${targetUser.id}'
+            user_id = '${targetUser.id}'
         `)
 
         // 2. Append new user into bizplace.
-        const foundBizplaces = await transactionalEntityManager
-          .getRepository(Bizplace)
-          .findByIds(bizplaces.map((bizplace: Bizplace) => bizplace.id), {
-            relations: ['users']
-          })
-
-        foundBizplaces.forEach(async (bizplace: Bizplace) => {
-          await transactionalEntityManager.getRepository(Bizplace).save({
-            ...bizplace,
-            users: [...bizplace.users, targetUser]
+        bizplaceUsers.forEach(async (bizplaceUser: BizplaceUser) => {
+          await getRepository(BizplaceUser).insert({
+            bizplace: bizplaceUser.bizplace,
+            user: targetUser,
+            myBizplace: bizplaceUser.myBizplace
           })
         })
 
-        return await transactionalEntityManager.getRepository(Bizplace).query(
+        return await getRepository(Bizplace).query(
           `
             SELECT
               id,
               name,
               description,
               CASE WHEN id IN (
-                SELECT
-                  B.id
-                FROM
-                  bizplaces B JOIN bizplaces_users BU
-                ON
-                  B.id = BU.bizplaces_id
-                WHERE
-                  BU.users_id = '${targetUser.id}'
+              SELECT
+                B.id
+              FROM
+                bizplaces B JOIN bizplaces_users BU
+              ON
+                B.id = BU.bizplace_id
+              WHERE
+                BU.user_id = '${targetUser.id}'
               ) THEN true
                 ELSE false
-              END AS assigned
+              END AS assigned,
+              BU.my_bizplace
             FROM
-              bizplaces
+              bizplaces B LEFT JOIN bizplaces_users BU
+            ON
+              B.id = BU.bizplace_id
           `
         )
       } catch (e) {
