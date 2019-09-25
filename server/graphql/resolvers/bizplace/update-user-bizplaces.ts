@@ -22,7 +22,7 @@ export const updateUserBizplaces = {
           await getRepository(BizplaceUser).insert({
             bizplace: bizplaceUser.bizplace,
             user: targetUser,
-            myBizplace: bizplaceUser.myBizplace
+            mainBizplace: bizplaceUser.mainBizplace
           })
         })
 
@@ -44,11 +44,12 @@ export const updateUserBizplaces = {
               ) THEN true
                 ELSE false
               END AS assigned,
-              BU.my_bizplace
+              BU.main_bizplace
             FROM
               bizplaces B LEFT JOIN bizplaces_users BU
             ON
               B.id = BU.bizplace_id
+            WHERE BU.user_id = '${targetUser.id}' OR BU.user_id IS NULL OR BU.user_id = ''
           `
         )
       } catch (e) {

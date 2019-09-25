@@ -25,5 +25,5 @@ export class BizplaceUser {
     nullable: true,
     default: false
   })
-  myBizplace: boolean
+  mainBizplace: boolean
 }

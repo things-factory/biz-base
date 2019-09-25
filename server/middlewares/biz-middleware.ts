@@ -1,5 +1,5 @@
-import { Bizplace } from '../entities'
 import { getRepository } from 'typeorm'
+import { Bizplace } from '../entities'
 
 export async function bizMiddleware(context: any, next: any) {
   if (context && context.state && context.state.user && context.state.user.id) {
@@ -24,6 +24,28 @@ export async function bizMiddleware(context: any, next: any) {
         )
       `
     )
+
+    const mainBiplace = await getRepository(Bizplace).query(
+      `
+        SELECT
+          id,
+          name,
+          description
+        FROM
+          bizplaces B
+        LEFT JOIN
+          bizplaces_users BU
+        ON
+          B.id = BU.bizplace_id
+        WHERE
+          user_id = '${userId}'
+        AND
+          BU.main_bizplace = true
+        LIMIT 1
+      `
+    )
+
+    context.state.mainBiplace = mainBiplace[0]
   }
 
   return next()

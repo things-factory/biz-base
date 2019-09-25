@@ -23,11 +23,12 @@ export const userBizplacesResolver = {
           ) THEN true
             ELSE false
           END AS assigned,
-          BU.my_bizplace
+          BU.main_bizplace
         FROM
           bizplaces B LEFT JOIN bizplaces_users BU
         ON
           B.id = BU.bizplace_id
+        WHERE BU.user_id = '${user.id}' OR BU.user_id IS NULL OR BU.user_id = ''
       `
     )
 
