@@ -6,52 +6,36 @@ export const updateUserBizplaces = {
   async updateUserBizplaces(_: any, { email, bizplaceUsers }, context: any) {
     return await getManager().transaction(async () => {
       try {
-        const targetUser: User = await getRepository(User).findOne({ where: { domain: context.state.domain, email } })
-        if (!targetUser) throw new Error('user not exists')
+        const user: User = await getRepository(User).findOne({ where: { domain: context.state.domain, email } })
+        if (!user) throw new Error('user not exists')
 
         // 1. Delete every bizplaces related with current user.
-        await getRepository(BizplaceUser).query(`
-          DELETE FROM
-            bizplaces_users
-          WHERE
-            user_id = '${targetUser.id}'
-        `)
+        await getRepository(BizplaceUser).delete({ user })
 
         // 2. Append new user into bizplace.
         bizplaceUsers.forEach(async (bizplaceUser: BizplaceUser) => {
           await getRepository(BizplaceUser).insert({
-            bizplace: bizplaceUser.bizplace,
-            user: targetUser,
+            bizplace: await getRepository(Bizplace).findOne(bizplaceUser.bizplace.id),
+            user,
             mainBizplace: bizplaceUser.mainBizplace
           })
         })
 
-        return await getRepository(Bizplace).query(
-          `
-            SELECT
-              id,
-              name,
-              description,
-              CASE WHEN id IN (
-              SELECT
-                B.id
-              FROM
-                bizplaces B JOIN bizplaces_users BU
-              ON
-                B.id = BU.bizplace_id
-              WHERE
-                BU.user_id = '${targetUser.id}'
-              ) THEN true
-                ELSE false
-              END AS assigned,
-              BU.main_bizplace
-            FROM
-              bizplaces B LEFT JOIN bizplaces_users BU
-            ON
-              B.id = BU.bizplace_id
-            WHERE BU.user_id = '${targetUser.id}' OR BU.user_id IS NULL OR BU.user_id = ''
-          `
-        )
+        const bizplaces = await getRepository(Bizplace).find({ domain: context.state.domain })
+        const userBizplaces = await getRepository(BizplaceUser).find({ where: { user }, relations: ['bizplace'] })
+        return bizplaces.map((bizplace: Bizplace) => {
+          return {
+            id: bizplace.id,
+            name: bizplace.name,
+            description: bizplace.description,
+            assigned:
+              userBizplaces.filter((bizplaceUser: BizplaceUser) => bizplaceUser.bizplace.id === bizplace.id).length > 0,
+            mainBizplace:
+              userBizplaces.filter(
+                (bizplaceUser: BizplaceUser) => bizplaceUser.bizplace.id === bizplace.id && bizplaceUser.mainBizplace
+              ).length > 0
+          }
+        })
       } catch (e) {
         throw e
       }
