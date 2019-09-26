@@ -25,7 +25,7 @@ export async function bizMiddleware(context: any, next: any) {
       `
     )
 
-    const mainBiplace = await getRepository(Bizplace).query(
+    const mainBizplace = await getRepository(Bizplace).query(
       `
         SELECT
           id,
@@ -45,7 +45,7 @@ export async function bizMiddleware(context: any, next: any) {
       `
     )
 
-    context.state.mainBiplace = mainBiplace[0]
+    context.state.mainBizplace = mainBizplace[0]
   }
 
   return next()
