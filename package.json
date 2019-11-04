@@ -1,6 +1,6 @@
 {
   "name": "@things-factory/biz-base",
-  "version": "1.0.0-alpha.1",
+  "version": "1.0.0-alpha.2",
   "main": "dist-server/index.js",
   "browser": "client/index.js",
   "things-factory": true,
@@ -28,7 +28,7 @@
     "@things-factory/shell": "^1.0.0-alpha.1"
   },
   "devDependencies": {
-    "@things-factory/opa-app": "*",
-    "@things-factory/opa-test": "*"
+    "@things-factory/opa-app": "^1.0.0-alpha.1",
+    "@things-factory/opa-test": "^1.0.0-alpha.1"
   }
 }
