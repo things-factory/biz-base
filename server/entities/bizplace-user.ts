@@ -20,10 +20,4 @@ export class BizplaceUser {
   @ManyToOne(type => Bizplace)
   @JoinColumn({ name: 'bizplace_id' })
   bizplace: Bizplace
-
-  @Column({
-    nullable: true,
-    default: false
-  })
-  mainBizplace: boolean
 }

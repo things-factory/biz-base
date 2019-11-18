@@ -1,25 +1,27 @@
 import { User } from '@things-factory/auth-base'
 import { Column, CreateDateColumn, Entity, Index, ManyToOne, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm'
-import { Customer } from './customer'
-import { Vendor } from './vendor'
+import { Bizplace } from '../entities'
 
 @Entity('partners')
-@Index('ix_partner_0', (partner: Partner) => [partner.customer, partner.vendor], { unique: true })
+@Index('ix_partner_0', (partner: Partner) => [partner.domainBizplace, partner.partnerBizplace], { unique: true })
 export class Partner {
   @PrimaryGeneratedColumn('uuid')
   id: String
 
-  @ManyToOne(type => Customer)
-  customer: Customer
+  @ManyToOne(type => Bizplace)
+  domainBizplace: Bizplace
 
-  @Column({ default: false })
-  customerApproved: Boolean
+  @ManyToOne(type => Bizplace)
+  partnerBizplace: Bizplace
 
-  @ManyToOne(type => Vendor)
-  vendor: Vendor
+  @Column()
+  type: String
 
-  @Column({ default: false })
-  vendorApproved: Boolean
+  @Column()
+  activated: Boolean
+
+  @Column()
+  status: String
 
   @CreateDateColumn()
   createdAt: Date

@@ -2,10 +2,12 @@ import gql from 'graphql-tag'
 
 export const Partner = gql`
   type Partner {
-    customer: Customer
-    customerApproved: Boolean
-    vendor: Vendor
-    vendorApproved: Boolean
+    id: String
+    domainBizplace: Bizplace
+    partnerBizplace: Bizplace
+    type: String
+    activated: Boolean
+    status: String
     creator: User
     updater: User
     createdAt: String
