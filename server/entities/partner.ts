@@ -1,5 +1,5 @@
 import { User } from '@things-factory/auth-base'
-import { CreateDateColumn, Entity, Index, ManyToOne, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm'
+import { Column, CreateDateColumn, Entity, Index, ManyToOne, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm'
 import { Customer } from './customer'
 import { Vendor } from './vendor'
 
@@ -9,11 +9,17 @@ export class Partner {
   @PrimaryGeneratedColumn('uuid')
   id: String
 
+  @ManyToOne(type => Customer)
+  customer: Customer
+
+  @Column({ default: false })
+  customerApproved: Boolean
+
   @ManyToOne(type => Vendor)
   vendor: Vendor
 
-  @ManyToOne(type => Customer)
-  customer: Customer
+  @Column({ default: false })
+  vendorApproved: Boolean
 
   @CreateDateColumn()
   createdAt: Date
