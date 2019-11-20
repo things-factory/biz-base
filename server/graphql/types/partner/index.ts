@@ -13,8 +13,7 @@ export const Mutation = `
 `
 
 export const Query = `
-  partnerCustomers(filters: [Filter], pagination: Pagination, sortings: [Sorting]): PartnerList
-  partnerVendors(filters: [Filter], pagination: Pagination, sortings: [Sorting]): PartnerList
+  partners(filters: [Filter], pagination: Pagination, sortings: [Sorting]): PartnerList
 `
 
 export const Types = [Partner, PartnerList]

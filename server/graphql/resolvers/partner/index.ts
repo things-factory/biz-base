@@ -1,9 +1,8 @@
 import { createPartner } from './create-partner'
 import { deletePartner } from './delete-partner'
-import { partnerCustomers } from './partner-customers'
-import { partnerVendors } from './partner-vendors'
+import { partnersResolver } from './partners'
 
-export const Query = { ...partnerCustomers, ...partnerVendors }
+export const Query = { ...partnersResolver }
 
 export const Mutation = {
   ...createPartner,
