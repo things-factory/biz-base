@@ -1,18 +1,14 @@
-import { buildQuery, ListParam } from '@things-factory/shell'
-import { getRepository } from 'typeorm'
+import { ListParam, convertListParams } from '@things-factory/shell'
+import { getRepository, FindManyOptions } from 'typeorm'
 import { Bizplace } from '../../../entities'
 
 export const bizplacesResolver = {
-  async bizplaces(_: any, params: ListParam, context: any) {
-    const queryBuilder = getRepository(Bizplace).createQueryBuilder()
-    buildQuery(queryBuilder, params, context)
-    const [items, total] = await queryBuilder
-      .leftJoinAndSelect('Bizplace.domain', 'Domain')
-      .leftJoinAndSelect('Bizplace.company', 'Company')
-      .leftJoinAndSelect('Bizplace.users', 'Users')
-      .leftJoinAndSelect('Bizplace.creator', 'Creator')
-      .leftJoinAndSelect('Bizplace.updater', 'Updater')
-      .getManyAndCount()
+  async bizplaces(_: any, params: ListParam, _context: any): Promise<{ items: Bizplace[]; total: number }> {
+    const convertedParams: FindManyOptions<Bizplace> = convertListParams(params)
+    const [items, total] = await getRepository(Bizplace).findAndCount({
+      ...convertedParams,
+      relations: ['domain', 'company', 'creator', 'updater']
+    })
 
     return { items, total }
   }
