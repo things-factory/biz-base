@@ -30,7 +30,7 @@ export async function bizMiddleware(context: any, next: any): Promise<void> {
 
   // 현재 로그인한 사용자가 현재 접속한 도메인에 소속된 사용자 => 관리자의 입장으로 접속
   // 현재 도메인과 partnership의 관계에 있는 모든 bizplace와 자신의 bizplace를 context.state.bizplaces에 할당함
-  if (checkUserBelongsDomain(context.state.domain, context.state.user)) {
+  if (await checkUserBelongsDomain(context.state.domain, context.state.user)) {
     bizplaces = [accessingBizplace, ...partners.map((partner: Partner) => partner.partnerBizplace)]
   }
 

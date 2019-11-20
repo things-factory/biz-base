@@ -1,7 +1,7 @@
-import { Domain } from '@things-factory/shell'
 import { User } from '@things-factory/auth-base'
-import { Bizplace, BizplaceUser } from '../entities'
+import { Domain } from '@things-factory/shell'
 import { getRepository } from 'typeorm'
+import { Bizplace, BizplaceUser } from '../entities'
 
 /**
  * @description Based on domain and user information,
@@ -20,5 +20,5 @@ export async function checkUserBelongsDomain(domain: Domain, user: User): Promis
     where: { bizplace: domainBizplace, user }
   })
 
-  return bizplaceUser ? true : false
+  return !bizplaceUser
 }
