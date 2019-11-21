@@ -10,14 +10,6 @@ export const Mutation = `
   deletePartner (
     id: String!
   ): Boolean
-
-  approvePartnership (
-    id: String!
-  ): Boolean
-
-  rejectPartnership (
-    id: String!
-  ): Boolean
 `
 
 export const Query = `

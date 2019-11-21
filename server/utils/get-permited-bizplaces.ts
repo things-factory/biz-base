@@ -49,7 +49,7 @@ export async function getPermittedBizplaces(domain: Domain, user: User): Promise
 
 export async function getPermittedBizplaceIds(domain: Domain, user: User): Promise<string[] | any[]> {
   const bizplaces: Bizplace[] = await getPermittedBizplaces(domain, user)
-  return bizplaces.map((bizplace: Bizplace) => bizplace.id)
+  return bizplaces.map((bizplace: Bizplace) => bizplace.id || null)
 }
 
 export async function getMyBizplace(user: User): Promise<Bizplace> {

@@ -12,7 +12,7 @@ import { Bizplace, BizplaceUser } from '../entities'
  */
 export async function checkUserBelongsDomain(domain: Domain, user: User): Promise<Boolean> {
   // Case 1. If the user belongs in the domain => bizplaces_users table doesn't have data
-  // Case 2. If the user dosen't blongs in the domain => bizplaces_users table has data
+  // Case 2. If the user dosen't belongs in the domain => bizplaces_users table has data
 
   // Get bizplace which is matched with domain.
   const domainBizplace: Bizplace = await getRepository(Bizplace).findOne({ where: { domain } })
@@ -20,5 +20,5 @@ export async function checkUserBelongsDomain(domain: Domain, user: User): Promis
     where: { bizplace: domainBizplace, user }
   })
 
-  return !!bizplaceUser
+  return !bizplaceUser
 }
