@@ -33,20 +33,26 @@ export async function getPermittedBizplaces(domain: Domain, user: User): Promise
   // 전달 받은 user가 현재 전달 받은 domain에 소속된 사용자 => 도메인과 파트너의 관계
   // 도메인과 partnership의 관계에 있는 모든 bizplace 중 user가 열람 가능한 bizplace 리스트를 찾아 return
   else {
-    const userBizplaces: BizplaceUser[] = await bizUserRepo.find({
+    const bizplaceUser: BizplaceUser = await getRepository(BizplaceUser).findOne({
       where: {
         user,
         bizplace: In(partners.map((partner: Partner) => partner.partnerBizplace.id))
-      }
+      },
+      relations: ['bizplace']
     })
 
-    bizplaces = userBizplaces.map((userBizplace: BizplaceUser) => userBizplace.bizplace)
+    bizplaces = bizplaceUser && bizplaceUser.bizplace ? [bizplaceUser.bizplace] : [null]
   }
 
-  return bizplaces.length > 0 ? bizplaces : [null]
+  return bizplaces
 }
 
 export async function getPermittedBizplaceIds(domain: Domain, user: User): Promise<string[] | any[]> {
   const bizplaces: Bizplace[] = await getPermittedBizplaces(domain, user)
   return bizplaces.map((bizplace: Bizplace) => bizplace.id)
+}
+
+export async function getMyBizplace(user: User): Promise<Bizplace> {
+  const bizplaceUser: BizplaceUser = await getRepository(BizplaceUser).findOne({ where: { user } })
+  return bizplaceUser.bizplace
 }

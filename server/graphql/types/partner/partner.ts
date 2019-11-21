@@ -6,11 +6,9 @@ export const Partner = gql`
     domainBizplace: Bizplace
     partnerBizplace: Bizplace
     type: String
-    activated: Boolean
-    status: String
-    creator: User
-    updater: User
-    createdAt: String
-    updatedAt: String
+    requestedAt: String
+    approvedAt: String
+    requester: User
+    approver: User
   }
 `

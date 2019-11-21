@@ -3,9 +3,7 @@ import { CreateDateColumn, Entity, Index, ManyToOne, PrimaryGeneratedColumn, Upd
 import { Bizplace } from '.'
 
 @Entity('bizplaces_users')
-@Index('ix_bizplace-user_0', (bizplaceUser: BizplaceUser) => [bizplaceUser.bizplace, bizplaceUser.user], {
-  unique: true
-})
+@Index('ix_bizplace-user_0', (bizplaceUser: BizplaceUser) => [bizplaceUser.user], { unique: true })
 export class BizplaceUser {
   @PrimaryGeneratedColumn('uuid')
   id: String

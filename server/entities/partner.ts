@@ -17,25 +17,19 @@ export class Partner {
   @Column()
   type: String
 
-  @Column()
-  activated: Boolean
-
-  @Column()
-  status: String
-
   @CreateDateColumn()
-  createdAt: Date
+  requestedAt: Date
 
   @UpdateDateColumn()
-  updatedAt: Date
+  approvedAt: Date
 
   @ManyToOne(type => User, {
     nullable: true
   })
-  creator: User
+  requester: User
 
   @ManyToOne(type => User, {
     nullable: true
   })
-  updater: User
+  approver: User
 }
