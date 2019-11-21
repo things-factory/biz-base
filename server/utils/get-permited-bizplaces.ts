@@ -43,7 +43,7 @@ export async function getPermittedBizplaces(domain: Domain, user: User): Promise
     bizplaces = userBizplaces.map((userBizplace: BizplaceUser) => userBizplace.bizplace)
   }
 
-  return bizplaces
+  return bizplaces.length > 0 ? bizplaces : [null]
 }
 
 export async function getPermittedBizplaceIds(domain: Domain, user: User): Promise<string[] | any[]> {

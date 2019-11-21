@@ -20,5 +20,5 @@ export async function checkUserBelongsDomain(domain: Domain, user: User): Promis
     where: { bizplace: domainBizplace, user }
   })
 
-  return !bizplaceUser
+  return !!bizplaceUser
 }
