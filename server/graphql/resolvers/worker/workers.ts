@@ -1,5 +1,5 @@
 import { convertListParams, ListParam } from '@things-factory/shell'
-import { getPermittedBizplaceIds } from 'server/utils'
+import { getPermittedBizplaceIds } from '../../../utils'
 import { getRepository, In } from 'typeorm'
 import { Worker } from '../../../entities'
 
