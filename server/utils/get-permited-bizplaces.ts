@@ -33,7 +33,7 @@ export async function getPermittedBizplaces(domain: Domain, user: User): Promise
   // 전달 받은 user가 현재 전달 받은 domain에 소속된 사용자 => 도메인과 파트너의 관계
   // 도메인과 partnership의 관계에 있는 모든 bizplace 중 user가 열람 가능한 bizplace 리스트를 찾아 return
   else {
-    const bizplaceUser: BizplaceUser = await getRepository(BizplaceUser).findOne({
+    const bizplaceUser: BizplaceUser = await bizUserRepo.findOne({
       where: {
         user,
         bizplace: In(partners.map((partner: Partner) => partner.partnerBizplace.id))
