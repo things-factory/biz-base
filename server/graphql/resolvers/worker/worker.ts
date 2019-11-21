@@ -1,5 +1,6 @@
 import { getRepository, In } from 'typeorm'
-import { Bizplace, Worker } from '../../../entities'
+import { Worker } from '../../../entities'
+import { getPermittedBizplaceIds } from '../../../utils'
 
 export const workerResolver = {
   async worker(_: any, { name }, context: any) {
@@ -7,7 +8,7 @@ export const workerResolver = {
       where: {
         domain: context.state.domain,
         name,
-        bizplace: In(context.state.bizplaces.map((bizplace: Bizplace) => bizplace.id))
+        bizplace: In(await getPermittedBizplaceIds(context.state.domain, context.state.user))
       },
       relations: ['domain', 'bizplace', 'creator', 'updater']
     })
