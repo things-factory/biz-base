@@ -1,5 +1,5 @@
 import { User } from '@things-factory/auth-base'
-import { Column, Entity, Index, JoinColumn, ManyToOne, PrimaryColumn } from 'typeorm'
+import { CreateDateColumn, Entity, Index, ManyToOne, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm'
 import { Bizplace } from '.'
 
 @Entity('bizplaces_users')
@@ -7,17 +7,28 @@ import { Bizplace } from '.'
   unique: true
 })
 export class BizplaceUser {
-  @PrimaryColumn()
-  userId: string
+  @PrimaryGeneratedColumn('uuid')
+  id: String
 
   @ManyToOne(type => User)
-  @JoinColumn({ name: 'user_id' })
   user: User
 
-  @PrimaryColumn()
-  bizplaceId: string
-
   @ManyToOne(type => Bizplace)
-  @JoinColumn({ name: 'bizplace_id' })
   bizplace: Bizplace
+
+  @CreateDateColumn()
+  createdAt: Date
+
+  @UpdateDateColumn()
+  updatedAt: Date
+
+  @ManyToOne(type => User, {
+    nullable: true
+  })
+  creator: User
+
+  @ManyToOne(type => User, {
+    nullable: true
+  })
+  updater: User
 }
