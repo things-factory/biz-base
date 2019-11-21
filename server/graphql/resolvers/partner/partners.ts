@@ -13,7 +13,7 @@ export const partnersResolver = {
 
       const [items, total] = await getRepository(Partner).findAndCount({
         ...convertedParams,
-        relations: ['domainBizplace', 'partnerBizplace', 'creator', 'updater']
+        relations: ['domainBizplace', 'partnerBizplace', 'requester', 'approver']
       })
 
       return { items, total }
