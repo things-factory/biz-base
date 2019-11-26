@@ -18,7 +18,7 @@ export const Mutation = `
   ): [Company] @priviledge(category: "company", priviledge: "mutation")
 
   deleteCompany (
-    id: id!
+    id: String!
   ): Company @priviledge(category: "company", priviledge: "mutation")
 
   deleteCompanies (
