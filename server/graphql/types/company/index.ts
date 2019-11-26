@@ -18,11 +18,11 @@ export const Mutation = `
   ): [Company] @priviledge(category: "company", priviledge: "mutation")
 
   deleteCompany (
-    name: String!
+    id: id!
   ): Company @priviledge(category: "company", priviledge: "mutation")
 
   deleteCompanies (
-    names: [String]!
+    ids: [String]!
   ): Boolean @priviledge(category: "company", priviledge: "mutation")
 `
 
