@@ -1,6 +1,6 @@
 {
   "name": "@things-factory/biz-base",
-  "version": "1.0.0-alpha.24",
+  "version": "1.0.0-alpha.25",
   "main": "dist-server/index.js",
   "browser": "client/index.js",
   "things-factory": true,
@@ -24,7 +24,6 @@
   },
   "dependencies": {
     "@things-factory/auth-base": "^1.0.0-alpha.1",
-    "@things-factory/menu-base": "^1.0.0-alpha.1",
     "@things-factory/shell": "^1.0.0-alpha.1"
   },
   "devDependencies": {
