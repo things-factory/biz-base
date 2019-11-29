@@ -53,6 +53,9 @@ export async function getPermittedBizplaceIds(domain: Domain, user: User): Promi
 }
 
 export async function getMyBizplace(user: User): Promise<Bizplace> {
-  const bizplaceUser: BizplaceUser = await getRepository(BizplaceUser).findOne({ where: { user } })
+  const bizplaceUser: BizplaceUser = await getRepository(BizplaceUser).findOne({
+    where: { user },
+    relations: ['bizplace']
+  })
   return bizplaceUser.bizplace
 }
