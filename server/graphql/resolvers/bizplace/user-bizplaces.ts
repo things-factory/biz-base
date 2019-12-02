@@ -4,7 +4,10 @@ import { Bizplace, BizplaceUser } from '../../../entities'
 
 export const userBizplacesResolver = {
   async userBizplaces(_: any, { email }, context: any) {
-    const user: User = await getRepository(User).findOne({ domain: context.state.domain, email })
+    const user: User = await getRepository(User).findOne({
+      domain: context.state.domain,
+      email: email != '' ? email : context.state.user.email
+    })
     const bizplaces = await getRepository(Bizplace).find({ domain: context.state.domain })
     const userBizplaces = await getRepository(BizplaceUser).find({ where: { user }, relations: ['bizplace'] })
     return bizplaces.map((bizplace: Bizplace) => {
