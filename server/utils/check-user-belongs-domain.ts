@@ -11,14 +11,16 @@ import { Bizplace, BizplaceUser } from '../entities'
  * @param user
  */
 export async function checkUserBelongsDomain(domain: Domain, user: User): Promise<Boolean> {
-  // Case 1. If the user belongs in the domain => bizplaces_users table doesn't have data
-  // Case 2. If the user dosen't belongs in the domain => bizplaces_users table has data
+  // Case 1. If bizplaces_users table has record with current domain bizplace and user => return true
+  // Case 2. If bizplaces_users table doesn't have record with current domain bizplace and user => return false
 
   // Get bizplace which is matched with domain.
   const domainBizplace: Bizplace = await getRepository(Bizplace).findOne({ where: { domain } })
+  // Get bizplace which is user assigned.
   const bizplaceUser: BizplaceUser = await getRepository(BizplaceUser).findOne({
-    where: { bizplace: domainBizplace, user }
+    where: { user },
+    relations: ['bizplace']
   })
 
-  return !bizplaceUser
+  return domainBizplace.id === bizplaceUser.bizplace.id
 }
