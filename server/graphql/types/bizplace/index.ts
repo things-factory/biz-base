@@ -35,6 +35,7 @@ export const Mutation = `
 
 export const Query = `
   customerBizplaces(name: String!): [Bizplace] @priviledge(category: "bizplace", priviledge: "query")
+  businessBizplace(name: String!): Bizplace @priviledge(category: "bizplace", priviledge: "query")
   userBizplaces(email: String!): [UserBizplace] @priviledge(category: "bizplace", priviledge: "query")
   bizplaces(filters: [Filter], pagination: Pagination, sortings: [Sorting]): BizplaceList @priviledge(category: "bizplace", priviledge: "query")
   bizplace(name: String!): Bizplace @priviledge(category: "bizplace", priviledge: "query")
