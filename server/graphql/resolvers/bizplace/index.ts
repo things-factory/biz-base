@@ -2,6 +2,7 @@ import { bizplaceResolver } from './bizplace'
 import { bizplacesResolver } from './bizplaces'
 import { userBizplacesResolver } from './user-bizplaces'
 import { customerBizplacesResolver } from './customer-bizplaces'
+import { businessBizplaceResolver } from './business-bizplace'
 
 import { updateBizplace } from './update-bizplace'
 import { updateMultipleBizplace } from './update-multiple-bizplace'
@@ -14,7 +15,8 @@ export const Query = {
   ...bizplaceResolver,
   ...bizplacesResolver,
   ...userBizplacesResolver,
-  ...customerBizplacesResolver
+  ...customerBizplacesResolver,
+  ...businessBizplaceResolver
 }
 
 export const Mutation = {
