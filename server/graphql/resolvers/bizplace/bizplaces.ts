@@ -1,18 +1,31 @@
-import { buildQuery, ListParam } from '@things-factory/shell'
-import { getRepository } from 'typeorm'
+import { convertListParams, ListParam } from '@things-factory/shell'
+import { getRepository, In } from 'typeorm'
 import { Bizplace } from '../../../entities'
+import { INSPECT_MAX_BYTES } from 'buffer'
 
 export const bizplacesResolver = {
   async bizplaces(_: any, params: ListParam, context: any) {
-    const queryBuilder = getRepository(Bizplace).createQueryBuilder()
-    buildQuery(queryBuilder, params, context)
-    const [items, total] = await queryBuilder
-      .leftJoinAndSelect('Bizplace.domain', 'Domain')
-      .leftJoinAndSelect('Bizplace.company', 'Company')
-      .leftJoinAndSelect('Bizplace.users', 'Users')
-      .leftJoinAndSelect('Bizplace.creator', 'Creator')
-      .leftJoinAndSelect('Bizplace.updater', 'Updater')
-      .getManyAndCount()
+    let bizplace_ids = []
+    let bizplaceIndex = params.filters.findIndex(x => x.name === 'bizplace')
+    if (bizplaceIndex > -1) {
+      bizplace_ids = params.filters
+        .filter(x => x.name === 'bizplace')
+        .map(item => {
+          return item.value
+        })
+      params.filters.splice(bizplaceIndex, 1)
+    }
+
+    const convertedParams = convertListParams(params)
+
+    if (!(bizplace_ids.length > 0))
+      convertedParams.where.id = In(context.state.bizplaces.map((bizplace: Bizplace) => bizplace.id))
+    else convertedParams.where.id = In(bizplace_ids)
+
+    const [items, total] = await getRepository(Bizplace).findAndCount({
+      ...convertedParams,
+      relations: ['domain', 'company', 'users', 'creator', 'updater']
+    })
 
     return { items, total }
   }
