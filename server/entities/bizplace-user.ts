@@ -1,5 +1,5 @@
 import { User } from '@things-factory/auth-base'
-import { CreateDateColumn, Entity, Index, ManyToOne, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm'
+import { Column, Entity, Index, ManyToOne, PrimaryGeneratedColumn } from 'typeorm'
 import { Bizplace } from '.'
 
 @Entity('bizplaces_users')
@@ -14,19 +14,9 @@ export class BizplaceUser {
   @ManyToOne(type => Bizplace)
   bizplace: Bizplace
 
-  @CreateDateColumn()
-  createdAt: Date
-
-  @UpdateDateColumn()
-  updatedAt: Date
-
-  @ManyToOne(type => User, {
-    nullable: true
+  @Column({
+    nullable: true,
+    default: false
   })
-  creator: User
-
-  @ManyToOne(type => User, {
-    nullable: true
-  })
-  updater: User
+  adminFlag: boolean
 }
