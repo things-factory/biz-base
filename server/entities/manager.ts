@@ -10,7 +10,7 @@ export class Manager {
   @Column()
   type: string
 
-  @ManyToOne(type => Manager)
+  @ManyToOne(type => User)
   user: User
 
   @Column()
