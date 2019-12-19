@@ -11,7 +11,7 @@ import { NewBizplaceRole } from './new-bizplace-role'
 // `
 
 export const Query = `
-  assignedRolesByUser(user: ObjectRef!): AssignedRole
+  assignedRolesByUser(user: ObjectRef!): [AssignedRole]
   rolesByBizplace(bizplace: ObjectRef!): RoleList
   rolesByUserBizplace: RoleList
 `

@@ -21,7 +21,7 @@ export async function rolesByBizplace(domain: Domain, bizplace: any, trxMgr?: En
       domain,
       bizplace
     },
-    relations: ['domain', 'bizplace', 'role']
+    relations: ['domain', 'bizplace', 'role', 'role.priviledges']
   })
 
   return <Role[]>bizplaceRoles.map((bizplaceRole: BizplaceRole) => bizplaceRole.role)

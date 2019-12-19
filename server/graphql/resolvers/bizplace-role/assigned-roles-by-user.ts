@@ -18,17 +18,17 @@ export async function assignedRolesByUser(user: User, domain: Domain, trxMgr?: E
   const permittedRoles: Role[] = await rolesByUserBizplace(user, domain, trxMgr)
 
   if (!user?.roles) {
-    user = await userRepo.find({
+    user = await userRepo.findOne({
       where: { id: user.id },
       relations: ['roles', 'roles.priviledges']
     })
   }
 
-  const userRoles: Role[] = await user.roles
-  return permittedRoles.filter((permittedRole: Role) => {
+  const userRoles: Role[] = user.roles
+  return permittedRoles.map((permittedRole: Role) => {
     return {
-      assigned: userRoles.find((userRole: Role) => permittedRole.id === userRole.id),
-      ...permittedRole
+      assigned: userRoles.find((userRole: Role) => permittedRole.id === userRole.id) ? true : false,
+      role: permittedRole
     }
   })
 }
