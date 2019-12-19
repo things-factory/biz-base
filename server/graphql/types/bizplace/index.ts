@@ -39,6 +39,7 @@ export const Query = `
   userBizplaces(email: String!): [UserBizplace] @priviledge(category: "bizplace", priviledge: "query")
   bizplaces(filters: [Filter], pagination: Pagination, sortings: [Sorting]): BizplaceList @priviledge(category: "bizplace", priviledge: "query")
   bizplace(name: String!): Bizplace @priviledge(category: "bizplace", priviledge: "query")
+  bizplaceUsers(filters: [Filter], pagination: Pagination, sortings: [Sorting]): UserList
 `
 
 export const Types = [Bizplace, NewBizplace, BizplacePatch, BizplaceUsersPatch, BizplaceList, UserBizplace]

@@ -1,4 +1,4 @@
-import { convertListParams, EntityManager, FindConditions, ListParam, Repository } from '@things-factory/shell'
+import { convertListParams, EntityManager, FindManyOptions, ListParam, Repository } from '@things-factory/shell'
 import { getRepository } from 'typeorm'
 import { Manager } from '../../../entities'
 
@@ -10,7 +10,7 @@ export const managersResolver = {
 }
 
 export async function managers(
-  params: FindConditions<Manager>,
+  params: FindManyOptions<Manager> = {},
   trxMgr?: EntityManager
 ): Promise<{ items: Manager[]; total: number }> {
   const managerRepo: Repository<Manager> = trxMgr?.getRepository(Manager) || getRepository(Manager)
