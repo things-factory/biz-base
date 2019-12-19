@@ -17,7 +17,7 @@ export async function assignedRolesByUser(user: User, domain: Domain, trxMgr?: E
   if (!user?.roles) {
     user = await userRepo.find({
       where: { id: user.id },
-      relations: ['roles']
+      relations: ['roles', 'roles.priviledges']
     })
   }
 
