@@ -13,10 +13,4 @@ export class BizplaceUser {
 
   @ManyToOne(type => Bizplace)
   bizplace: Bizplace
-
-  @Column({
-    nullable: true,
-    default: false
-  })
-  adminFlag: boolean
 }
