@@ -4,7 +4,7 @@ import { createManager } from './create-manager'
 import { updateManager } from './update-manager'
 
 export const updateMultipleManagerResolver = {
-  async updateMultipleManager(_: any, { patches }, context: any) {
+  async updateMultipleManager(_: any, { patches }, _context: any) {
     return await getManager().transaction(async (trxMgr: EntityManager) => {
       return await updateMultipleManager(patches, trxMgr)
     })

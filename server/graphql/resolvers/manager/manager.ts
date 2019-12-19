@@ -11,6 +11,6 @@ export async function manager(id: string, trxMgr?: EntityManager): Promise<Manag
   const managerRepo: Repository<Manager> = trxMgr?.getRepository(Manager) || getRepository(Manager)
   return await managerRepo.findOne({
     where: { id },
-    relations: ['user']
+    relations: ['user', 'bizplace']
   })
 }

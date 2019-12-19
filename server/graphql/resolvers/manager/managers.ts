@@ -5,7 +5,7 @@ import { Manager } from '../../../entities'
 export const managersResolver = {
   async managers(_: any, params: ListParam, _context: any) {
     const convertedParams = convertListParams(params)
-    return await managers({ ...convertedParams, relations: ['user'] })
+    return await managers({ ...convertedParams, relations: ['user', 'bizplace'] })
   }
 }
 

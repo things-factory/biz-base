@@ -4,7 +4,7 @@ export const ManagerPatch = gql`
   input ManagerPatch {
     id: String
     type: String
-    refId: String
+    bizplace: ObjectRef
     user: ObjectRef
   }
 `

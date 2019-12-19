@@ -4,7 +4,7 @@ export const Manager = gql`
   type Manager {
     id: String
     type: String
-    refId: String
+    bizplace: Bizplace
     user: User
   }
 `
