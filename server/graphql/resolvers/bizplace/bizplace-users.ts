@@ -9,7 +9,7 @@ export const bizplaceUsersResolver = {
     const myBizplace: Bizplace = await getMyBizplace(context.state.user)
     return await bizplaceUsers(myBizplace, {
       ...(await convertListParams(params)),
-      relations: ['roles', 'domain', 'domains', 'priviledges', 'users']
+      relations: ['domain', 'domains', 'roles', 'roles.priviledges', 'roles.users']
     })
   }
 }
