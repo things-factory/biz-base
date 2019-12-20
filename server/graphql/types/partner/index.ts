@@ -1,5 +1,6 @@
 import { Partner } from './partner'
 import { PartnerList } from './partner-list'
+import { PartnerRoleAssignment } from './partner-role-assignment'
 
 export const Mutation = `
   createPartner (
@@ -14,6 +15,7 @@ export const Mutation = `
 
 export const Query = `
   partners(filters: [Filter], pagination: Pagination, sortings: [Sorting]): PartnerList
+  roleAssignedPartners(role: Role!): [PartnerRoleAssignment]
 `
 
-export const Types = [Partner, PartnerList]
+export const Types = [Partner, PartnerList, PartnerRoleAssignment]
