@@ -15,7 +15,7 @@ export const Mutation = `
 
 export const Query = `
   partners(filters: [Filter], pagination: Pagination, sortings: [Sorting]): PartnerList
-  roleAssignedPartners(role: Role!): [PartnerRoleAssignment]
+  roleAssignedPartners(role: ObjectRef!): [PartnerRoleAssignment]
 `
 
 export const Types = [Partner, PartnerList, PartnerRoleAssignment]
