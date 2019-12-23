@@ -11,6 +11,14 @@ export const updateAssignedRoleResolver = {
       bizplaces.push(await getMyBizplace(context.state.user))
     }
 
+    if (bizplaces?.length) {
+      bizplaces = await Promise.all(
+        bizplaces.map(async (bizplace: any) => {
+          return await getRepository(Bizplace).findOne(bizplace.id)
+        })
+      )
+    }
+
     if (role?.id) {
       role = await getRepository(Role).findOne(role.id)
     }
