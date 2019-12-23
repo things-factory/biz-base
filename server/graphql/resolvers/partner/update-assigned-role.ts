@@ -3,7 +3,7 @@ import { Domain } from '@things-factory/shell'
 import { EntityManager, getRepository, Repository } from 'typeorm'
 import { Bizplace, BizplaceRole } from '../../../entities'
 import { getMyBizplace } from '../../../utils'
-import { roleAssignedPartners } from './role-assigned-partners'
+import { bizplaceRoleAssignment } from '../bizplace-role'
 
 export const updateAssignedRoleResolver = {
   async updateAssignedRole(_: any, { role, bizplaces = [], selfAssignment = false }, context: any) {
@@ -16,7 +16,7 @@ export const updateAssignedRoleResolver = {
     }
 
     await updateAssignedRole(role, bizplaces, context.state.domain)
-    return await roleAssignedPartners(role, context.state.domain)
+    return await bizplaceRoleAssignment(role, context.state.domain)
   }
 }
 
