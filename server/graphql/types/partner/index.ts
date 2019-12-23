@@ -11,6 +11,12 @@ export const Mutation = `
   deletePartner (
     id: String!
   ): Boolean
+
+  updateAssignedRole (
+    role: ObjectRef!
+    bizplaces: [ObjectRef]
+    selfAssignment: Boolean
+  ): [PartnerRoleAssignment]
 `
 
 export const Query = `
