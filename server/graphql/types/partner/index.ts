@@ -16,7 +16,7 @@ export const Mutation = `
     role: ObjectRef!
     bizplaces: [ObjectRef]
     selfAssignment: Boolean
-  ): [BizplaceRoleAssignment]
+  ): BizplaceRoleAssignment
 `
 
 export const Query = `
