@@ -4,7 +4,6 @@ import * as Bizplace from './bizplace'
 import * as BizplaceRole from './bizplace-role'
 import * as Company from './company'
 import * as ContactPoint from './contact-point'
-import * as Manager from './manager'
 import * as Partner from './partner'
 import * as Worker from './worker'
 
@@ -16,8 +15,7 @@ export const queries = [
   Worker.Query,
   Partner.Query,
   BizOption.Query,
-  BizOptionDetail.Query,
-  Manager.Query
+  BizOptionDetail.Query
 ]
 
 export const mutations = [
@@ -27,6 +25,5 @@ export const mutations = [
   Worker.Mutation,
   Partner.Mutation,
   BizOption.Mutation,
-  BizOptionDetail.Mutation,
-  Manager.Mutation
+  BizOptionDetail.Mutation
 ]

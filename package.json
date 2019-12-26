@@ -1,6 +1,6 @@
 {
   "name": "@things-factory/biz-base",
-  "version": "1.0.0-alpha.53",
+  "version": "1.0.0-alpha.54",
   "main": "dist-server/index.js",
   "browser": "client/index.js",
   "things-factory": true,
