@@ -5,6 +5,7 @@ export const NewContactPoint = gql`
     bizplace: ObjectRef!
     name: String!
     email: String!
+    address: String
     fax: String
     phone: String
     description: String

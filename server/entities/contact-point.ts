@@ -26,6 +26,11 @@ export class ContactPoint {
   @Column({
     nullable: true
   })
+  address: string
+
+  @Column({
+    nullable: true
+  })
   fax: string
 
   @Column({
