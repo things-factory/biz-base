@@ -1,9 +1,13 @@
-import { getRepository } from 'typeorm'
+import { EntityManager, getRepository, Repository } from 'typeorm'
 import { Worker } from '../../../entities'
 
-export const deleteWorker = {
-  async deleteWorker(_: any, { name }, context: any) {
-    await getRepository(Worker).delete({ domain: context.state.domain, name })
-    return true
+export const deleteWorkerResolver = {
+  async deleteWorker(_: any, { id }, _context: any) {
+    return deleteWorker(id)
   }
+}
+
+export async function deleteWorker(id: string, trxMgr?: EntityManager) {
+  const repository: Repository<Worker> = trxMgr ? trxMgr.getRepository(Worker) : getRepository(Worker)
+  return await repository.delete(id)
 }

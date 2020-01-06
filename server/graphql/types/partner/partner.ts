@@ -1,8 +1,14 @@
-import { gql } from 'apollo-server-koa'
+import gql from 'graphql-tag'
 
 export const Partner = gql`
   type Partner {
-    customer: Customer
-    vendor: Vendor
+    id: String
+    domainBizplace: Bizplace
+    partnerBizplace: Bizplace
+    type: String
+    requestedAt: String
+    approvedAt: String
+    requester: User
+    approver: User
   }
 `

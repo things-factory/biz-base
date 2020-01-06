@@ -16,8 +16,7 @@ export const updateUserBizplaces = {
         bizplaceUsers.forEach(async (bizplaceUser: BizplaceUser) => {
           await getRepository(BizplaceUser).insert({
             bizplace: await getRepository(Bizplace).findOne(bizplaceUser.bizplace.id),
-            user,
-            mainBizplace: bizplaceUser.mainBizplace
+            user
           })
         })
 
@@ -29,11 +28,7 @@ export const updateUserBizplaces = {
             name: bizplace.name,
             description: bizplace.description,
             assigned:
-              userBizplaces.filter((bizplaceUser: BizplaceUser) => bizplaceUser.bizplace.id === bizplace.id).length > 0,
-            mainBizplace:
-              userBizplaces.filter(
-                (bizplaceUser: BizplaceUser) => bizplaceUser.bizplace.id === bizplace.id && bizplaceUser.mainBizplace
-              ).length > 0
+              userBizplaces.filter((bizplaceUser: BizplaceUser) => bizplaceUser.bizplace.id === bizplace.id).length > 0
           }
         })
       } catch (e) {

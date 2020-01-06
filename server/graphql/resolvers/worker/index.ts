@@ -1,10 +1,10 @@
 import { workerResolver } from './worker'
 import { workersResolver } from './workers'
 
-import { updateWorker } from './update-worker'
-import { createWorker } from './create-worker'
-import { deleteWorker } from './delete-worker'
-import { deleteWorkers } from './delete-workers'
+import { updateWorker, updateWorkerResolver } from './update-worker'
+import { createWorker, createWorkerResolver } from './create-worker'
+import { deleteWorker, deleteWorkerResolver } from './delete-worker'
+import { deleteWorkers, deleteWorkersResolver } from './delete-workers'
 import { updateMultipleWorker } from './update-multiple-worker'
 
 export const Query = {
@@ -13,9 +13,11 @@ export const Query = {
 }
 
 export const Mutation = {
-  ...updateWorker,
-  ...createWorker,
-  ...deleteWorker,
-  ...deleteWorkers,
+  ...updateWorkerResolver,
+  ...createWorkerResolver,
+  ...deleteWorkerResolver,
+  ...deleteWorkersResolver,
   ...updateMultipleWorker
 }
+
+export { createWorker, deleteWorkers, updateWorker, deleteWorker }

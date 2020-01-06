@@ -1,7 +1,7 @@
 import { convertListParams, ListParam } from '@things-factory/shell'
 import { getRepository, In } from 'typeorm'
 import { Bizplace } from '../../../entities'
-import { INSPECT_MAX_BYTES } from 'buffer'
+import { getPermittedBizplaceIds } from '../../../utils'
 
 export const bizplacesResolver = {
   async bizplaces(_: any, params: ListParam, context: any) {
@@ -19,7 +19,7 @@ export const bizplacesResolver = {
     const convertedParams = convertListParams(params)
 
     if (!(bizplace_ids.length > 0))
-      convertedParams.where.id = In(context.state.bizplaces.map((bizplace: Bizplace) => bizplace.id))
+      convertedParams.where.id = In(await getPermittedBizplaceIds(context.state.domain, context.state.user))
     else convertedParams.where.id = In(bizplace_ids)
 
     const [items, total] = await getRepository(Bizplace).findAndCount({

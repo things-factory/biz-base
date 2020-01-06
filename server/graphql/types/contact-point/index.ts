@@ -19,11 +19,11 @@ export const Mutation = `
   ): [ContactPoint] @priviledge(category: "contact_point", priviledge: "mutation")
 
   deleteContactPoint (
-    name: String!
+    id: String!
   ): ContactPoint @priviledge(category: "contact_point", priviledge: "mutation")
 
   deleteContactPoints (
-    names: [String]!
+    ids: [String]!
   ): Boolean @priviledge(category: "contact_point", priviledge: "mutation")
 `
 

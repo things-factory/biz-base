@@ -1,5 +1,6 @@
 import { User } from '@things-factory/auth-base'
 import { Domain } from '@things-factory/shell'
+import { BizOption } from './biz-option'
 import {
   Column,
   CreateDateColumn,
@@ -22,7 +23,16 @@ export class Bizplace {
   @ManyToOne(type => Domain)
   domain: Domain
 
-  @OneToMany(type => BizplaceUser, bizplaceUser => bizplaceUser.bizplace)
+  @OneToMany(
+    type => BizOption,
+    bizOption => bizOption.bizplace
+  )
+  bizOptions: BizOption[]
+
+  @OneToMany(
+    type => BizplaceUser,
+    bizplaceUser => bizplaceUser.bizplace
+  )
   users: []
 
   @ManyToOne(type => Company)

@@ -1,4 +1,5 @@
 import { User } from '@things-factory/auth-base'
+import { Domain } from '@things-factory/shell'
 import { Column, CreateDateColumn, Entity, Index, ManyToOne, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm'
 
 @Entity('companies')
@@ -38,6 +39,11 @@ export class Company {
     nullable: true
   })
   status: string
+
+  @ManyToOne(type => Domain, {
+    nullable: true
+  })
+  domain: Domain
 
   @ManyToOne(type => User, {
     nullable: true

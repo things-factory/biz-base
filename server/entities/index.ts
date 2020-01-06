@@ -1,12 +1,23 @@
+import { BizOption } from './biz-option'
+import { BizOptionDetail } from './biz-option-detail'
 import { Bizplace } from './bizplace'
+import { BizplaceRole } from './bizplace-role'
 import { BizplaceUser } from './bizplace-user'
 import { Company } from './company'
 import { ContactPoint } from './contact-point'
-import { Customer } from './customer'
 import { Partner } from './partner'
-import { Vendor } from './vendor'
 import { Worker } from './worker'
 
-export const entities = [Bizplace, BizplaceUser, Company, Customer, ContactPoint, Vendor, Worker, Partner]
+export const entities = [
+  Bizplace,
+  BizplaceUser,
+  BizplaceRole,
+  Company,
+  ContactPoint,
+  Worker,
+  Partner,
+  BizOption,
+  BizOptionDetail
+]
 
-export { Bizplace, BizplaceUser, Company, Customer, ContactPoint, Vendor, Worker, Partner }
+export { Bizplace, BizplaceUser, BizplaceRole, Company, ContactPoint, Worker, Partner, BizOption, BizOptionDetail }

@@ -1,11 +1,10 @@
-import { companyResolver } from './company'
 import { companiesResolver } from './companies'
-
-import { updateCompany } from './update-company'
+import { companyResolver } from './company'
+import { createCompany, createCompanyResolver } from './create-company'
+import { deleteCompanies, deleteCompaniesResolver } from './delete-companies'
+import { deleteCompany, deleteCompanyResolver } from './delete-company'
+import { updateCompany, updateCompanyResolver } from './update-company'
 import { updateMultipleCompany } from './update-multiple-company'
-import { createCompany } from './create-company'
-import { deleteCompany } from './delete-company'
-import { deleteCompanies } from './delete-companies'
 
 export const Query = {
   ...companyResolver,
@@ -13,9 +12,11 @@ export const Query = {
 }
 
 export const Mutation = {
-  ...updateCompany,
-  ...updateMultipleCompany,
-  ...createCompany,
-  ...deleteCompany,
-  ...deleteCompanies
+  ...updateCompanyResolver,
+  ...createCompanyResolver,
+  ...deleteCompanyResolver,
+  ...deleteCompaniesResolver,
+  ...updateMultipleCompany
 }
+
+export { createCompany, deleteCompanies, updateCompany, deleteCompany }

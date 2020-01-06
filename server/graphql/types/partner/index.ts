@@ -1,5 +1,6 @@
 import { Partner } from './partner'
 import { PartnerList } from './partner-list'
+import { PartnerRoleAssignment } from './partner-role-assignment'
 
 export const Mutation = `
   createPartner (
@@ -10,13 +11,17 @@ export const Mutation = `
   deletePartner (
     id: String!
   ): Boolean
+
+  updateAssignedRole (
+    role: ObjectRef!
+    bizplaces: [ObjectRef]
+    selfAssignment: Boolean
+  ): BizplaceRoleAssignment
 `
 
 export const Query = `
-  partnerCustomers(vendor: ObjectRef!, filters: [Filter], pagination: Pagination, sortings: [Sorting]): PartnerList
-  partnerCustomer(vendor: ObjectRef!, customer: ObjectRef!): Partner
-  partnerVendors(customer: ObjectRef!, filters: [Filter], pagination: Pagination, sortings: [Sorting]): PartnerList
-  partnerVendor(customer: ObjectRef!, vendor: ObjectRef!): Partner
+  partners(filters: [Filter], pagination: Pagination, sortings: [Sorting]): PartnerList
+  roleAssignedPartners(role: ObjectRef!): [PartnerRoleAssignment]
 `
 
-export const Types = [Partner, PartnerList]
+export const Types = [Partner, PartnerList, PartnerRoleAssignment]

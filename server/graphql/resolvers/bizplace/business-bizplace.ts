@@ -1,11 +1,13 @@
 import { ListParam } from '@things-factory/shell'
-import { getRepository, In } from 'typeorm'
+import { getRepository } from 'typeorm'
 import { Bizplace } from '../../../entities'
+import { getMyBizplace } from '../../../utils'
 
 export const businessBizplaceResolver = {
   async businessBizplace(_: any, params: ListParam, context: any) {
+    const myBizplace: Bizplace = await getMyBizplace(context.state.user)
     return await getRepository(Bizplace).findOne({
-      where: { domain: context.state.domain, id: In([context.state.mainBizplace.id]) },
+      where: { id: myBizplace.id },
       relations: ['company', 'domain', 'users', 'creator', 'updater']
     })
   }

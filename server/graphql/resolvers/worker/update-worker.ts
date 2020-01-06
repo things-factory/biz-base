@@ -1,18 +1,23 @@
-import { getRepository } from 'typeorm'
-import { Worker, Bizplace } from '../../../entities'
+import { Domain } from '@things-factory/shell'
+import { EntityManager, getRepository, Repository } from 'typeorm'
+import { Worker } from '../../../entities'
 
-export const updateWorker = {
-  async updateWorker(_: any, { name, patch }, context: any) {
-    const worker = await getRepository(Worker).findOne({ domain: context.state.domain, name })
-
-    if (patch.bizplace && patch.bizplace.id) {
-      worker.bizplace = await getRepository(Bizplace).findOne(patch.bizplace.id)
-    }
-
-    return await getRepository(Worker).save({
-      ...worker,
-      ...patch,
-      updater: context.state.user
-    })
+export const updateWorkerResolver = {
+  async updateWorker(_: any, { id, patch }, context: any) {
+    return await updateWorker(id, patch, context.state.domain, context.state.user)
   }
+}
+
+export async function updateWorker(id: string, patch: Worker, domain: Domain, user: any, trxMgr?: EntityManager) {
+  const repository: Repository<Worker> = trxMgr ? trxMgr.getRepository(Worker) : getRepository(Worker)
+  const worker = await repository.findOne({
+    domain,
+    id
+  })
+
+  return repository.save({
+    ...worker,
+    ...patch,
+    updater: user
+  })
 }
