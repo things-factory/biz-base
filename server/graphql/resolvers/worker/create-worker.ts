@@ -1,19 +1,22 @@
-import { getRepository } from 'typeorm'
-import { Bizplace, Worker } from '../../../entities'
+import { getMyBizplace } from '../../../utils'
+import { Domain } from 'domain'
+import { EntityManager, getRepository, Repository } from 'typeorm'
+import { Worker } from '../../../entities'
 
-export const createWorker = {
+export const createWorkerResolver = {
   async createWorker(_: any, { worker }, context: any) {
-    if (worker.bizplace && worker.bizplace.id) {
-      worker.bizplace = await getRepository(Bizplace).findOne(worker.bizplace.id)
-
-      return await getRepository(Worker).save({
-        ...worker,
-        domain: context.state.domain,
-        creator: context.state.user,
-        updater: context.state.user
-      })
-    } else {
-      throw new Error(`There's no specified bizplace id`)
-    }
+    return await createWorker(worker, context.state.domain, context.state.user)
   }
+}
+
+export async function createWorker(worker: Worker, domain: Domain, user: any, trxMgr?: EntityManager) {
+  const repository: Repository<Worker> = trxMgr ? trxMgr.getRepository(Worker) : getRepository(Worker)
+
+  return await repository.save({
+    ...worker,
+    domain,
+    bizplace: await getMyBizplace(user),
+    creator: user,
+    updater: user
+  })
 }

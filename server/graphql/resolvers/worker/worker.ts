@@ -1,6 +1,6 @@
+import { getPermittedBizplaceIds } from '../../../utils'
 import { getRepository, In } from 'typeorm'
 import { Worker } from '../../../entities'
-import { getPermittedBizplaceIds } from '../../../utils'
 
 export const workerResolver = {
   async worker(_: any, { name }, context: any) {
