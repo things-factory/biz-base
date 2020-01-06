@@ -3,6 +3,7 @@ import gql from 'graphql-tag'
 export const Company = gql`
   type Company {
     id: String
+    domain: Domain
     name: String
     description: String
     countryCode: String

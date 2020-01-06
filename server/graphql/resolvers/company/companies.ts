@@ -7,7 +7,7 @@ export const companiesResolver = {
     const convertedParams: FindManyOptions<Company> = convertListParams(params)
     const [items, total] = await getRepository(Company).findAndCount({
       ...convertedParams,
-      relations: ['creator', 'updater']
+      relations: ['domain', 'creator', 'updater']
     })
     return { items, total }
   }
