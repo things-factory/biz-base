@@ -1,10 +1,13 @@
 import { convertListParams, ListParam } from '@things-factory/shell'
-import { FindManyOptions, getRepository } from 'typeorm'
+import { getRepository, In } from 'typeorm'
+import { getPermittedBizplaceIds } from '../../../utils'
 import { Company } from '../../../entities'
 
 export const companiesResolver = {
-  async companies(_: any, params: ListParam, _context: any) {
-    const convertedParams: FindManyOptions<Company> = convertListParams(params)
+  async companies(_: any, params: ListParam, context: any) {
+    const convertedParams = convertListParams(params)
+    convertedParams.where.bizplace = In(await getPermittedBizplaceIds(context.state.domain, context.state.user))
+
     const [items, total] = await getRepository(Company).findAndCount({
       ...convertedParams,
       relations: ['domain', 'creator', 'updater']
