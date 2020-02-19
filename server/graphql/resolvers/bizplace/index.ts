@@ -2,6 +2,7 @@ import { bizplaceResolver } from './bizplace'
 import { bizplaceUsersResolver } from './bizplace-users'
 import { bizplacesResolver } from './bizplaces'
 import { businessBizplaceResolver } from './business-bizplace'
+import { checkUserBelongsDomainResolver } from './check-user-belongs-domain'
 import { createBizplace } from './create-bizplace'
 import { customerBizplacesResolver } from './customer-bizplaces'
 import { deleteBizplace } from './delete-bizplace'
@@ -15,8 +16,9 @@ export const Query = {
   ...bizplaceResolver,
   ...bizplacesResolver,
   ...bizplaceUsersResolver,
-  ...userBizplacesResolver,
+  ...checkUserBelongsDomainResolver,
   ...customerBizplacesResolver,
+  ...userBizplacesResolver,
   ...businessBizplaceResolver
 }
 

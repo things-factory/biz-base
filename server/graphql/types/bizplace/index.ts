@@ -40,6 +40,7 @@ export const Query = `
   bizplaces(filters: [Filter], pagination: Pagination, sortings: [Sorting]): BizplaceList @priviledge(category: "bizplace", priviledge: "query")
   bizplace(name: String!): Bizplace @priviledge(category: "bizplace", priviledge: "query")
   bizplaceUsers(filters: [Filter], pagination: Pagination, sortings: [Sorting]): UserList
+  checkUserBelongsDomain: Boolean
 `
 
 export const Types = [Bizplace, NewBizplace, BizplacePatch, BizplaceUsersPatch, BizplaceList, UserBizplace]
