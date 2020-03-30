@@ -15,6 +15,10 @@ export const userBizplacesResolver = {
         id: bizplace.id,
         name: bizplace.name,
         description: bizplace.description,
+        userBizplaceId: userBizplaces
+          .map(userBiz => userBiz.bizplace.id)
+          .slice(0, 1)
+          .shift(),
         assigned:
           userBizplaces.filter((bizplaceUser: BizplaceUser) => bizplaceUser.bizplace.id === bizplace.id).length > 0
       }

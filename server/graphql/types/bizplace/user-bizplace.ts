@@ -6,6 +6,7 @@ export const UserBizplace = gql`
     name: String
     description: String
     assigned: Boolean
+    userBizplaceId: String
     mainBizplace: Boolean
   }
 `
