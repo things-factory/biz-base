@@ -1,6 +1,6 @@
 {
   "name": "@things-factory/biz-base",
-  "version": "2.2.1",
+  "version": "2.2.2",
   "main": "dist-server/index.js",
   "browser": "client/index.js",
   "things-factory": true,
@@ -24,6 +24,9 @@
   },
   "dependencies": {
     "@things-factory/auth-base": "^2.0.0"
+  },
+  "resolutions": {
+    "@things-factory/auth-base": "^2.0.2"
   },
   "devDependencies": {
     "@things-factory/opa-app": "^2.0.0",
